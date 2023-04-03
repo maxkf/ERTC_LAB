@@ -75,7 +75,8 @@ const char keypadLayout[4][4] = {
     {'7', '8', '9', 'C'},
     {'4', '5', '6', 'B'},
     {'1', '2', '3', 'A'}};
-uint8_t store1, store2;
+uint8_t colum, row;
+char triggeredChar;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -106,13 +107,30 @@ extern void initialise_monitor_handles(void);
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   //HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_5);
-  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR2 << 1, REG_KEY_DATA_1, 1,&store1 , 1, I2C_TIMEOUT);
-  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR2 << 1, REG_KEY_DATA_2, 1,&store2, 1, I2C_TIMEOUT);
+  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR2 << 1, REG_KEY_DATA_1, 1,&colum, 1, I2C_TIMEOUT);
+  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR2 << 1, REG_KEY_DATA_2, 1,&row, 1, I2C_TIMEOUT);
   printf("Interrupt on pin (%d).\n", GPIO_Pin);
-  printf("Store1 (%d)    Store2 (%d).\n", store1, store2);
-  /* your code here */
+  printf("colum.raw (%d)    row.raw (%d).\n", colum, row);
+  colum = getIndex (colum);
+  row = getIndex(row);
+  printf("colum (%d)    row (%d).\n", colum, row);
+  triggeredChar = keypadLayout[row][colum];
+  printf("Triggered Char: %s", triggeredChar);
 }
+/* your code here */
 
+void getIndex(uint8_t value){
+  switch (value){
+    case 35||57:
+      return 0;
+    case 1||2:
+      return 1;
+    case 1||2:
+      return 2;
+    case 1||2:
+      return 3;
+  }
+}
 
 /* USER CODE END 0 */
 
