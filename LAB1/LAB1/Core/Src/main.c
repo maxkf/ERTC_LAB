@@ -75,6 +75,7 @@ const char keypadLayout[4][4] = {
     {'7', '8', '9', 'C'},
     {'4', '5', '6', 'B'},
     {'1', '2', '3', 'A'}};
+uint8_t store1, store2;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,9 +105,14 @@ extern void initialise_monitor_handles(void);
 /* USER CODE BEGIN 0 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
+  //HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_5);
+  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR2 << 1, REG_KEY_DATA_1, 1,&store1 , 1, I2C_TIMEOUT);
+  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR2 << 1, REG_KEY_DATA_2, 1,&store2, 1, I2C_TIMEOUT);
   printf("Interrupt on pin (%d).\n", GPIO_Pin);
+  printf("Store1 (%d)    Store2 (%d).\n", store1, store2);
   /* your code here */
 }
+
 
 /* USER CODE END 0 */
 
@@ -1216,12 +1222,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : GPIO_EXTI2_PROXY_TOF_SENS_IRQ_Pin GPIO_EXTI4_KPAD_IRQ_Pin */
-  GPIO_InitStruct.Pin = GPIO_EXTI2_PROXY_TOF_SENS_IRQ_Pin|GPIO_EXTI4_KPAD_IRQ_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
-
   /*Configure GPIO pins : GPIO_EXTI3_IMU_IRQ_Pin GPIO_EXTI8_USER_BUT1_IRQ_Pin GPIO_EXTI9_USER_BUT2_IRQ_Pin GPIO_EXTI10_BUMP1_IRQ_Pin
                            GPIO_EXTI11_BUMP2_IRQ_Pin GPIO_EXTI12_BUMP3_IRQ_Pin GPIO_EXTI13_BUMP4_IRQ_Pin */
   GPIO_InitStruct.Pin = GPIO_EXTI3_IMU_IRQ_Pin|GPIO_EXTI8_USER_BUT1_IRQ_Pin|GPIO_EXTI9_USER_BUT2_IRQ_Pin|GPIO_EXTI10_BUMP1_IRQ_Pin
@@ -1229,6 +1229,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : GPIO_EXTI4_KPAD_IRQ_Pin */
+  GPIO_InitStruct.Pin = GPIO_EXTI4_KPAD_IRQ_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIO_EXTI4_KPAD_IRQ_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : RMII_MDC_Pin RMII_RXD0_Pin RMII_RXD1_Pin */
   GPIO_InitStruct.Pin = RMII_MDC_Pin|RMII_RXD0_Pin|RMII_RXD1_Pin;
