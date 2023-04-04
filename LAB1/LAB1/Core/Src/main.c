@@ -75,8 +75,9 @@ const char keypadLayout[4][4] = {
     {'7', '8', '9', 'C'},
     {'4', '5', '6', 'B'},
     {'1', '2', '3', 'A'}};
-uint8_t colum, row;
+int colum, row;
 char triggeredChar;
+int columDir [4]= { 3, 2 ,1 ,0};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -100,6 +101,18 @@ static void MX_USART2_UART_Init(void);
 static void MX_TIM9_Init(void);
 /* USER CODE BEGIN PFP */
 extern void initialise_monitor_handles(void);
+int getIndex(int value);
+int findBinary(int decimal){
+	int base = 1;
+	int binary = 0;
+   while(decimal > 0){
+	   int rem = decimal % 2;
+	   binary = binary + rem*base;
+	   decimal = decimal / 2;
+	   base = base * 10;
+   }
+   printf("Binary: %d\n\r", binary);
+}
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -115,20 +128,22 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   row = getIndex(row);
   printf("colum (%d)    row (%d).\n", colum, row);
   triggeredChar = keypadLayout[row][colum];
-  printf("Triggered Char: %s", triggeredChar);
+  printf("Triggered Char: %c \n\r ", triggeredChar);
 }
 /* your code here */
 
-void getIndex(uint8_t value){
+int getIndex(int value){
   switch (value){
-    case 35||57:
-      return 0;
-    case 1||2:
-      return 1;
-    case 1||2:
-      return 2;
-    case 1||2:
+    case 247:
       return 3;
+    case 251:
+      return 2;
+    case 253:
+      return 1;
+    case 254:
+      return 0;
+    default:
+    	return 99;
   }
 }
 
@@ -314,14 +329,17 @@ int main(void)
   printf("Ready\n");
 
   /* USER CODE END 2 */
-
+  int lineData;
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
+	  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR1 << 1, REG_DATA_B, 1, &lineData, 1, I2C_TIMEOUT);
+	  findBinary(lineData);
+	  printf("Decimal is: %d \n\r", lineData);
+	  HAL_Delay(500);
+	  /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }

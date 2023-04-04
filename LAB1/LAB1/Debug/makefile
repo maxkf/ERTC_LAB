@@ -60,8 +60,8 @@ all: main-build
 main-build: LAB1.elf secondary-outputs
 
 # Tool invocations
-LAB1.elf LAB1.map: $(OBJS) $(USER_OBJS) Z:\windows_profile\Downloads\ERTC_LAB-main\ERTC_LAB-main\LAB1\LAB1\STM32F767ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LAB1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"Z:\windows_profile\Downloads\ERTC_LAB-main\ERTC_LAB-main\LAB1\LAB1\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB1.map" -Wl,--gc-sections -static -specs=rdimon.specs --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LAB1.elf LAB1.map: $(OBJS) $(USER_OBJS) Z:\windows_profile\Documenti\ERTCLAB\ERTC_LAB\LAB1\LAB1\STM32F767ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LAB1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"Z:\windows_profile\Documenti\ERTCLAB\ERTC_LAB\LAB1\LAB1\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB1.map" -Wl,--gc-sections -static -specs=rdimon.specs --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
