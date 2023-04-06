@@ -75,9 +75,11 @@ const char keypadLayout[4][4] = {
     {'7', '8', '9', 'C'},
     {'4', '5', '6', 'B'},
     {'1', '2', '3', 'A'}};
+uint8_t store1, store2;
 int colum, row;
 char triggeredChar;
 int columDir [4]= { 3, 2 ,1 ,0};
+int keypadFreq = 1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -117,6 +119,10 @@ int findBinary(int decimal){
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int inputUser = 0;
+int counter = 0;
+int flag=0;
+int freq;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   //HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_5);
@@ -128,9 +134,20 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   row = getIndex(row);
   printf("colum (%d)    row (%d).\n", colum, row);
   triggeredChar = keypadLayout[row][colum];
+
+  if(flag == 1){
+	  freq = inputUser;
+	  inputUser = 0;
+	  counter = 0;
+	  flag = 0;
+  }
+	  if((triggeredChar <= '9') && (triggeredChar >= '0')){
+	  	 		  keypadFreq = (int)(triggeredChar - '0');
+	  	 		  inputUser = inputUser*(10^counter) + keypadFreq;
+	  	 		  counter++;
+	  }
   printf("Triggered Char: %c \n\r ", triggeredChar);
 }
-/* your code here */
 
 int getIndex(int value){
   switch (value){
@@ -146,7 +163,6 @@ int getIndex(int value){
     	return 99;
   }
 }
-
 /* USER CODE END 0 */
 
 /**
@@ -327,19 +343,41 @@ int main(void)
 
 
   printf("Ready\n");
-
+  //int lineData;
   /* USER CODE END 2 */
-  int lineData;
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-	  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR1 << 1, REG_DATA_B, 1, &lineData, 1, I2C_TIMEOUT);
+
+
+	  /*HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR1 << 1, REG_DATA_B, 1, &lineData, 1, I2C_TIMEOUT);
 	  findBinary(lineData);
 	  printf("Decimal is: %d \n\r", lineData);
-	  HAL_Delay(500);
-	  /* USER CODE BEGIN 3 */
+	  HAL_Delay(500);*/
+	  if(triggeredChar == '#'){
+		  flag = 1;
+		  HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_5);
+		  if(inputUser != 0){
+			  HAL_Delay((1.0/inputUser)*1000);
+		  }
+		  else{
+			  HAL_Delay(1000);
+		  }
+	  }
+	  else{
+		  HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_5);
+		  if(freq != 0){
+			  HAL_Delay((1.0/freq)*1000);
+		  }
+		  else{
+			  HAL_Delay(1000);
+		  }
+	  }
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
@@ -1033,10 +1071,6 @@ static void MX_TIM9_Init(void)
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim9, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
   if (HAL_TIM_PWM_ConfigChannel(&htim9, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
   {
     Error_Handler();
@@ -1243,7 +1277,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOG_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOE, GPIO_OUT_SPI_CS_SDCARD_Pin|GPIO_OUT_SPI_CS_LCD_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOE, GPIO_OUT_SPI_CS_SDCARD_Pin|GPIO_OUT_SPI_CS_LCD_Pin|GPIO_PIN_5, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, LD1_Pin|LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
@@ -1251,8 +1285,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, GPIO_PIN_6, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : GPIO_OUT_SPI_CS_SDCARD_Pin GPIO_OUT_SPI_CS_LCD_Pin */
-  GPIO_InitStruct.Pin = GPIO_OUT_SPI_CS_SDCARD_Pin|GPIO_OUT_SPI_CS_LCD_Pin;
+  /*Configure GPIO pins : GPIO_OUT_SPI_CS_SDCARD_Pin GPIO_OUT_SPI_CS_LCD_Pin PE5 */
+  GPIO_InitStruct.Pin = GPIO_OUT_SPI_CS_SDCARD_Pin|GPIO_OUT_SPI_CS_LCD_Pin|GPIO_PIN_5;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

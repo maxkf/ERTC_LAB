@@ -607,15 +607,14 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
 
     __HAL_RCC_GPIOE_CLK_ENABLE();
     /**TIM9 GPIO Configuration
-    PE5     ------> TIM9_CH1
     PE6     ------> TIM9_CH2
     */
-    GPIO_InitStruct.Pin = TIM9_CH1_USER_LED1_Pin|TIM9_CH2_USER_LED2_Pin;
+    GPIO_InitStruct.Pin = TIM9_CH2_USER_LED2_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     GPIO_InitStruct.Alternate = GPIO_AF3_TIM9;
-    HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+    HAL_GPIO_Init(TIM9_CH2_USER_LED2_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN TIM9_MspPostInit 1 */
 
