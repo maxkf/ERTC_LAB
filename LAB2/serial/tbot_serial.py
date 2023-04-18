@@ -27,7 +27,7 @@ class SerialCommunicationInterface():
 
 
 
-interface = SerialCommunicationInterface('COM7', 115200)
+interface = SerialCommunicationInterface('COM1', 115200)
 
 #interface.connect()
 # while True:

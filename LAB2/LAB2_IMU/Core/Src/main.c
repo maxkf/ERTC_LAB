@@ -156,8 +156,8 @@ uint32_t saturate(uint32_t val, uint32_t min, uint32_t max){
 struct ertc_dlog logger;
 struct datalog
 {
-	float w1, w2;
-	float u1, u2;
+	float w1, w2 ;
+	float u1, u2 ;
 } logger_data;
 
 
@@ -250,10 +250,16 @@ int main(void)
 	  tilt = -angle;
 	  angle = d_gyro_xyz.z * 180 / 3.14;
 	  pan = -angle/8;
-	  logger_data.w1 = d_accel_xyz.x;
-	  logger_data.u2 = d_gyro_xyz.x;
-	  logger_data.u1 = -3.14;
-	  logger_data.w2 = 0.555683;
+
+	  //logger_data.w1 = d_accel_xyz.x;
+	  logger_data.w1 = pan;
+	  logger_data.w2 = d_gyro_xyz.z;
+	  logger_data.u1 = tilt;
+	  logger_data.u2 = d_accel_xyz.y;
+	  /*logger_data.w3 = d_accel_xyz.z;
+	  logger_data.u1 = d_gyro_xyz.x;
+	  logger_data.u2 = d_gyro_xyz.y;
+	  logger_data.u3 = d_gyro_xyz.z;*/
 	  ertc_dlog_send(&logger, &logger_data, sizeof(logger_data));
 	  ertc_dlog_update(&logger);
 
