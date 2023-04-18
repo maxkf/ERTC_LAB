@@ -1,9 +1,0 @@
-
-%clear all; clc;close all; instrreset
-
-
-%data = serial_datalog('COM9',{'2*single','2*single'}, 'baudrate',115200)
-
- plot(turtlebot_data.time,turtlebot_data.tilt_data)
- 
- plot(turtlebot_data.time,turtlebot_data.pan_data)
