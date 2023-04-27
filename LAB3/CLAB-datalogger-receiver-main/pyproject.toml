@@ -1,0 +1,49 @@
+[project]
+name = "clab-datalogger-receiver"
+version = "0.2.0"
+description = "A porting of another MATLAB implementation of the same data receiver and plotter."
+license = {file='LICENSE'}
+authors = [ 
+    {name="Marco Perin", email="marco.perin.6@studenti.unipd.it"},
+]
+dependencies = [
+    'cobs>=1.2.0',
+    'pyserial>=3.5',
+    'scipy>=1.10.1',
+    'pyyaml>=6.0',
+    'typing;python_version < "3.5"',
+    'PyQt6>=6.5.0',
+    'pyqtgraph>=0.13.3',
+    'pyqtdarktheme>=2.1.0'
+]
+readme= "README.md"
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+dev = ["black", "bumpver", "isort", "pip-tools", "pytest", "pyinstaller"]
+
+
+[project.urls]
+repository = "https://github.com/sparcs-unipd/CLAB-datalogger-receiver"
+
+[tool.bumpver]
+current_version = "0.2.0"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message  = "Bump version {old_version} -> {new_version}"
+commit          = true
+tag             = true
+push            = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
+"src/clab_datalogger_receiver/__init__.py" = ["{version}"]
+
+[build-system]
+# Minimum requirements for the build system to execute.
+requires = ["setuptools", "wheel"]  # PEP 508 specifications.
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+# line-length = 88
+line-length = 80
+skip-string-normalization = 1
