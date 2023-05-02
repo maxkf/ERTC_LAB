@@ -1,6 +1,6 @@
 [project]
 name = "clab-datalogger-receiver"
-version = "0.2.0"
+version = "0.2.3"
 description = "A porting of another MATLAB implementation of the same data receiver and plotter."
 license = {file='LICENSE'}
 authors = [ 
@@ -11,23 +11,38 @@ dependencies = [
     'pyserial>=3.5',
     'scipy>=1.10.1',
     'pyyaml>=6.0',
-    'typing;python_version < "3.5"',
-    'PyQt6>=6.5.0',
+    'typing_extensions;python_version < "3.11"', # for typing.Self
+    'PySide6>=6.5.0',
     'pyqtgraph>=0.13.3',
     'pyqtdarktheme>=2.1.0'
 ]
 readme= "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.10"
+
 
 [project.optional-dependencies]
-dev = ["black", "bumpver", "isort", "pip-tools", "pytest", "pyinstaller"]
+dev = ["black", "bumpver", "isort", "pip-tools", "pytest", "nuitka"]
 
 
 [project.urls]
 repository = "https://github.com/sparcs-unipd/CLAB-datalogger-receiver"
 
+
+[tool.black]
+# line-length = 88
+line-length = 80
+skip-string-normalization = 1
+
+[tool.pylint.messages_control]
+extension-pkg-whitelist="PySide6"
+# ignore = "E203"
+
+# Not supported :(
+# [tool.flake8]
+# ignore = ['E203']
+
 [tool.bumpver]
-current_version = "0.2.0"
+current_version = "0.2.3"
 version_pattern = "MAJOR.MINOR.PATCH"
 commit_message  = "Bump version {old_version} -> {new_version}"
 commit          = true
@@ -37,13 +52,29 @@ push            = false
 [tool.bumpver.file_patterns]
 "pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
 "src/clab_datalogger_receiver/__init__.py" = ["{version}"]
+"scripts/build.bat" = ["--file-version={version} ","--product-version={version} "]
+
 
 [build-system]
 # Minimum requirements for the build system to execute.
 requires = ["setuptools", "wheel"]  # PEP 508 specifications.
 build-backend = "setuptools.build_meta"
 
-[tool.black]
-# line-length = 88
-line-length = 80
-skip-string-normalization = 1
+# Could be good to make work the following lines
+# requires = ["setuptools>=42", "wheel", "nuitka", "toml","PySide6"]
+# build-backend = "nuitka.distutils.Build"
+
+
+# [nuitka]
+# These are not recommended, but they make it obvious to have effect.
+
+# boolean option, e.g. if you cared for C compilation commands, leading
+# dashes are omitted
+# show-scons = true
+
+# options with single values, e.g. enable a plugin of Nuitka
+# enable-plugin = 'pyside6'
+
+# options with several values, e.g. avoiding including modules, accepts
+# list argument.
+# nofollow-import-to = ["tkinter", "*.tests", "*.distutils"]

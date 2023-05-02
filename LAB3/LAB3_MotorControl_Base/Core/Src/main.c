@@ -104,43 +104,16 @@ float PI_controller (float error);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+float controller_return ,motor_V , reference_rpm = 20 ,tracking_error;
 
 struct datalog {
-	float w1, w2;
-	float u1, u2;
+	float w1, w2 , u1;
+	float u2;
 } data;
 
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-
-
-	    float control_signal = PI_controller(TIM3_DiffCount);
-
-	    // command a motor
-
-	    uint32_t duty;
-	    /* calculate duty properly */
-	    if (duty <= 0) {
-
-	    	// rotate forward
-	        /* alternate between forward and coast
-	    	__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)duty);
-	        __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
-
-
-	        /* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
-	    	__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)TIM8_ARR_VALUE);
-	        __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, TIM8_ARR_VALUE - duty);
-
-	    } else { // rotate backward
-	        __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
-	        __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)-duty);
-	    }
-	    //command a motor
-
-
-
 	/* Speed ctrl routine */
 	if(htim->Instance == TIM6)
 	{
@@ -174,26 +147,62 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 
 		TIM3_PreviousCount = TIM3_CurrentCount;
-	    /* 3. compute the motor speed, in [rpm] for example
-	    * 4. compute the tracking error
+	    // 3. compute the motor speed, in [rpm] for example
+
+		double current_rpm = (TIM3_DiffCount/(2*1920.0))*(60/TS );
+	    // reference_rpm = 20;
+	    tracking_error = reference_rpm - current_rpm;
+	    /* 4. compute the tracking error
 	    * 5. compute the proportional term
 	    * 6. compute the integral term (simplest way is to use forward Euler method) * u_int=u_int+Ki*TS*err
 	    * 7. calculate the PI signal and set the pwm of the motor properly
 	    */
+	     controller_return = PI_controller(tracking_error);
 
+	     motor_V = controller_return ;
+
+
+	    // anti windup
+	    if(motor_V > 8)
+	    	motor_V = 8;
+	    if(motor_V < -8)
+			motor_V = -8;
+
+	    motor_V = 2;
+
+	    int32_t duty = V2DUTY*motor_V;
+	    // command a motor
+		/* calculate duty properly */
+		if (duty >= 0) {
+
+			// rotate forward
+			// alternate between forward and coast
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)duty);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
+
+
+			/* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)TIM8_ARR_VALUE);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, TIM8_ARR_VALUE - duty);
+
+		} else { // rotate backward
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)-duty);
+		}
+	   	    //command a motor
 
      	/*	Prepare data packet */
-		data.w1 = 10;
-		data.w2 += 1.085;
-		data.u1 = -3.14;
+		data.w1 = reference_rpm;
+		data.w2 = current_rpm;
+		data.u1 = controller_return;
 		data.u2 = 0.555683;
 
 		ertc_dlog_send(&logger, &data, sizeof(data));
 	}
 }
 
-float Kp = 1;
-float KI = 1;
+float Kp = 3;
+float KI = 2;
 
 
 float PI_controller (float error){

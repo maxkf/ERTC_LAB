@@ -60,8 +60,8 @@ all: main-build
 main-build: LAB3_MotorControl_Base.elf secondary-outputs
 
 # Tool invocations
-LAB3_MotorControl_Base.elf LAB3_MotorControl_Base.map: $(OBJS) $(USER_OBJS) Z:\windows_profile\Documenti\ERTC_LAB\ERTC_LAB\LAB3\LAB3_MotorControl_Base\STM32F767ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LAB3_MotorControl_Base.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"Z:\windows_profile\Documenti\ERTC_LAB\ERTC_LAB\LAB3\LAB3_MotorControl_Base\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB3_MotorControl_Base.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LAB3_MotorControl_Base.elf LAB3_MotorControl_Base.map: $(OBJS) $(USER_OBJS) Z:\Downloads\ERTC_LAB\LAB3\LAB3_MotorControl_Base\STM32F767ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LAB3_MotorControl_Base.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"Z:\Downloads\ERTC_LAB\LAB3\LAB3_MotorControl_Base\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB3_MotorControl_Base.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

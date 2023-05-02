@@ -94,8 +94,8 @@ class TurtlebotThreadedConnection(SerialThreadedRecvTx):
         the STM to start transmitting
     """
 
-    SEND_DATA_TOKEN = b'\x41\x00'
-    STOP_DATA_TOKEN = b'\x42\x00'
+    SEND_DATA_TOKEN = b'\x41'
+    STOP_DATA_TOKEN = b'\x42'
 
     packet_spec: PlottingStruct
     rx_queue: Queue
@@ -108,7 +108,8 @@ class TurtlebotThreadedConnection(SerialThreadedRecvTx):
         self,
         packet_spec: PlottingStruct,
         rx_queue: Queue,
-        packet_type: Type[TimedPacketBase] = TimedPacket
+        packet_type: Type[TimedPacketBase] = TimedPacket,
+        t_0: float | datetime | None = None
         # packet_type: Type[Packet] = DateTimedPacket
     ) -> None:
         """Init the class to communicate with the turtlebot."""
@@ -122,7 +123,7 @@ class TurtlebotThreadedConnection(SerialThreadedRecvTx):
 
         # if isinstance(packet_type, TimedPacketBase):
         # self.t0 = packet_type.get_time()
-        self.t_0 = None
+        self.t_0 = t_0
 
     def signal_start_communication(self):
         """Instruct the STM to start sendind data."""
@@ -141,11 +142,13 @@ class TurtlebotThreadedConnection(SerialThreadedRecvTx):
         assert data
 
         if len(data) != self.packet_spec.struct_byte_size:
-            return False, None
-            # raise ValueError(('ERR: data size != packet size '
-            #                   f'({len(data)} vs '
-            #                   f'{self.packet_spec.struct_byte_size})'
-            #                   ))
+            raise ValueError(
+                (
+                    'ERROR: received data size != specified packet size '
+                    f'({len(data)}B vs '
+                    f'{self.packet_spec.struct_byte_size}B)'
+                )
+            )
 
         return True, data
 
