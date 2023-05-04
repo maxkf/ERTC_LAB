@@ -142,13 +142,14 @@ class TurtlebotThreadedConnection(SerialThreadedRecvTx):
         assert data
 
         if len(data) != self.packet_spec.struct_byte_size:
-            raise ValueError(
-                (
-                    'ERROR: received data size != specified packet size '
-                    f'({len(data)}B vs '
-                    f'{self.packet_spec.struct_byte_size}B)'
-                )
-            )
+            # raise ValueError(
+            #     (
+            #         'ERROR: received data size != specified packet size '
+            #         f'({len(data)}B vs '
+            #         f'{self.packet_spec.struct_byte_size}B)'
+            #     )
+            # )
+            return False, None
 
         return True, data
 

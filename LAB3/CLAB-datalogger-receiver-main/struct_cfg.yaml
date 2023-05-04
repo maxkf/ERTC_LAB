@@ -1,8 +1,7 @@
 %YAML 1.2
 ---
-- accel_data: { a_x: float, a_y: float, a_z: float }
-- misc_data: { a: float }
-# - misc_data: { a: float, b: float }
-# - subplot1: { data: float }
-# - subplot2: { data: float }
-# - accel_data: { a_x: float, a_y: float, a_z: float, a: float, b: float }
+- Motor_1 : { reference_rpm: float, current_rpm_1: float, tracking_error_1: float}
+- controller_1_data: { controller_return_1: float }
+
+- Motor_2: { reference_rpm: float, current_rpm_2: float, tracking_error_2: float}
+- controller_2_data: { controller_return_2: float }
