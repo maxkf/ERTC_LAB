@@ -26,6 +26,7 @@
 #include <stdbool.h>
 #include "ertc-datalogger.h"
 #include "SX1509_Registers.h"
+#include "stdio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -116,7 +117,8 @@ float PI_controller (float error);
 /* USER CODE BEGIN 0 */
 float controller_return_1 ,motor_V_1  ,tracking_error_1;
 float controller_return_2 ,motor_V_2  ,tracking_error_2;
-float  reference_rpm = 20;
+float  reference_rpm_L;
+float  reference_rpm_R;
 
 struct datalog {
 	float w1, w2 , u1, u2;
@@ -164,7 +166,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	    // 3. compute the motor speed, in [rpm] for example
 
 		float current_rpm_1 = ((float)TIM3_DiffCount/(2.0*1920.0))*(60.0/TS );
-	    tracking_error_1 = reference_rpm - current_rpm_1;
+	    tracking_error_1 = reference_rpm_R - current_rpm_1;
 
 
 
@@ -190,7 +192,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		TIM4_PreviousCount = TIM4_CurrentCount;
 
 		float current_rpm_2 = ((float)TIM4_DiffCount/(2.0*1920.0))*(60.0/TS );
-	    tracking_error_2 = reference_rpm - current_rpm_2;
+	    tracking_error_2 = reference_rpm_L - current_rpm_2;
 
 	    /* 4. compute the tracking error
 	    * 5. compute the proportional term
@@ -261,13 +263,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)-duty_2);
 		}
      	/*	Prepare data packet */
-		data.w1 = reference_rpm;
+		data.w1 = reference_rpm_L;
 		data.w2 = current_rpm_1;
 		data.u1 = tracking_error_1;
 		data.u2 = controller_return_1;
 
 
-		data.x1 = reference_rpm;
+		data.x1 = reference_rpm_R;
 		data.x2 = current_rpm_2;
 		data.y1 = tracking_error_2;
 		data.y2 = controller_return_2;
@@ -286,10 +288,10 @@ float PI_controller (float error){
 	I = I + error * KI * TS;
 	return P + I;
 }
-int i =0;
-int findBinary(int decimal){
+
+void findBinary(int decimal, int * binary){
 	//int base = 1;
-	int binary[8] = {0};
+	int i =0;
    while(decimal > 0){
 	   int rem = decimal % 2;
 	   binary[i] = rem;
@@ -298,7 +300,20 @@ int findBinary(int decimal){
 	   //base = base * 10;
    }
    //printf("Binary: %d\n\r", binary);
-   return 0;
+//   return binary;
+}
+
+int calc_error_line (int binary[]){
+	float distance_from_middle[8]={0};
+	float sum_dist = 0;
+	int sum_binary = 0;
+	for(int n=0;n<8;n++){
+		sum_binary += binary[n];
+		distance_from_middle[n]=((7.0/2.0)-n)*4;
+		sum_dist += binary[n]*distance_from_middle[n];
+	}
+	float line_error = sum_dist / sum_binary;
+	return line_error;
 }
 //#define N 8  //number of the sensors
 /* USER CODE END 0 */
@@ -425,16 +440,22 @@ int main(void)
 
   /* Start speed ctrl ISR */
   HAL_TIM_Base_Start_IT(&htim6);
-  int lineData;
+  uint8_t lineData;
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   while (1)
   {
-	  HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR1 << 1, REG_DATA_B, 1, &lineData, 1, I2C_TIMEOUT);
-	  findBinary(lineData);
+	  status = HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR1 << 1, REG_DATA_B, 1, &lineData, 1, I2C_TIMEOUT);
+	  int binary[8] = {0};
+	  findBinary(lineData, binary);
+	  float line_error = calc_error_line(binary);
+	  reference_rpm_L = 10 - line_error;
+	  reference_rpm_R = 10 + line_error;
+
 	  printf("Decimal is: %d \n\r", lineData);
 	  HAL_Delay(500);
     /* USER CODE END WHILE */
