@@ -207,16 +207,16 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 
 	     //anti windup
-	    if(motor_V_1 > 4)
-	    	motor_V_1 = 4;
-	    if(motor_V_1 < -4)
-	    	motor_V_1 = -4;
+	    /*if(motor_V_1 > 5)
+	    	motor_V_1 = 5;
+	    if(motor_V_1 < -5)
+	    	motor_V_1 = -5;
 
-	    if(motor_V_2 > 4)
-	    	motor_V_2 = 4;
-	    if(motor_V_2 < -4)
-	    	motor_V_2 = -4;  
-  
+	    if(motor_V_2 > 5)
+	    	motor_V_2 = 5;
+	    if(motor_V_2 < -5)
+	    	motor_V_2 = -5;
+*/
 
 	    int32_t duty_1 = V2DUTY*motor_V_1;
 	    // command a motor
@@ -250,13 +250,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 			// rotate forward
 			// alternate between forward and coast
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)duty_2);
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)duty_2);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
 
 
 			/* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)TIM8_ARR_VALUE);
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, TIM8_ARR_VALUE - duty_2);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)TIM8_ARR_VALUE);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, TIM8_ARR_VALUE - duty_2);
 
 		} else { // rotate backward
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
@@ -286,6 +286,9 @@ float PI_controller (float error){
 	float P = Kp * error;
 	static float I = 0;
 	I = I + error * KI * TS;
+	if(I>10){
+		I=10;
+	}
 	return P + I;
 }
 
@@ -314,6 +317,15 @@ int calc_error_line (int binary[]){
 	}
 	float line_error = sum_dist / sum_binary;
 	return line_error;
+}
+
+void calc_yaw_error(float current_rpm_1,float current_rpm_2){
+	float omega_R = current_rpm_1 *2*3.14/60;
+	float omega_L = current_rpm_2 *2*3.14/60;
+	float linear_speed_R = 34*omega_R;
+	float linear_speed_L = 34*omega_L;
+	float robot_rotation_speed = (linear_speed_R-linear_speed_L)/165;
+	static float last_time = 0;
 }
 //#define N 8  //number of the sensors
 /* USER CODE END 0 */
@@ -453,11 +465,14 @@ int main(void)
 	  int binary[8] = {0};
 	  findBinary(lineData, binary);
 	  float line_error = calc_error_line(binary);
-	  reference_rpm_L = 10 - line_error;
-	  reference_rpm_R = 10 + line_error;
+	  //phi_err = line_error/85;
+	  calc_yaw_error()
+
+	  reference_rpm_L = 100 - line_error*12;
+	  reference_rpm_R = 100 + line_error*12;
 
 	  printf("Decimal is: %d \n\r", lineData);
-	  HAL_Delay(500);
+	  //HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
