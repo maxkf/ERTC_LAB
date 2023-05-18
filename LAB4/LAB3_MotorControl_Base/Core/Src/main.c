@@ -123,8 +123,65 @@ float  reference_rpm_R;
 struct datalog {
 	float w1, w2 , u1, u2;
 	float x1, x2 , y1, y2;
-} data;
+} data_log;
 
+float Kp = 0.34;
+float KI = 0.2;
+
+
+float PI_controller (float error){
+	float P = Kp * error;
+	static float I = 0;
+	I = I + error * KI * TS;
+	if(I>10){
+		I=10;
+	}
+	return P + I;
+}
+
+void findBinary(int decimal, int * binary){
+	//int base = 1;
+	int i =0;
+   while(decimal > 0){
+	   int rem = decimal % 2;
+	   binary[i] = rem;
+	   i++;
+	   decimal = decimal / 2;
+	   //base = base * 10;
+   }
+   //printf("Binary: %d\n\r", binary);
+//   return binary;
+}
+
+int calc_error_line (int binary[]){
+	float distance_from_middle[8]={0};
+	float sum_dist = 0;
+	int sum_binary = 0;
+	for(int n=0;n<8;n++){
+		sum_binary += binary[n];
+		distance_from_middle[n]=((7.0/2.0)-n)*4;
+		sum_dist += binary[n]*distance_from_middle[n];
+	}
+	float line_error = sum_dist / sum_binary;
+	return line_error;
+}
+
+float calc_yaw_error(float line_error){
+	/*float omega_R = current_rpm_1 *2*3.14/60;
+	float omega_L = current_rpm_2 *2*3.14/60;
+	float linear_speed_R = 34*omega_R;
+	float linear_speed_L = 34*omega_L;
+	float robot_rotation_speed = (linear_speed_R-linear_speed_L)/165;
+	static float last_time = 0;*/
+	float phi_err = line_error/85;
+	float yaw_err = phi_err * (165/2);
+	return yaw_err;
+}
+
+uint8_t lineData;
+uint8_t data;
+HAL_StatusTypeDef status;
+int32_t duty_1;
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -135,6 +192,17 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	    * 1. read the counter value from the encoder
 	    * 2. compute the difference between the current value and the old value
 	    */
+		status = HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR1 << 1, REG_DATA_B, 1, &lineData, 1, I2C_TIMEOUT);
+		  int binary[8] = {0};
+		  findBinary(lineData, binary);
+		  float line_error = calc_error_line(binary);
+		  //phi_err = line_error/85;
+		  float yaw_err = calc_yaw_error(line_error);
+
+
+		  reference_rpm_L = 170 - yaw_err*22;
+		  reference_rpm_R = 170 + yaw_err*22;
+
 
 		uint32_t TIM3_CurrentCount , TIM4_CurrentCount;
 		int32_t TIM3_DiffCount , TIM4_DiffCount;
@@ -167,6 +235,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 		float current_rpm_1 = ((float)TIM3_DiffCount/(2.0*1920.0))*(60.0/TS );
 	    tracking_error_1 = reference_rpm_R - current_rpm_1;
+
 
 
 
@@ -218,20 +287,24 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	    	motor_V_2 = -5;
 */
 
-	    int32_t duty_1 = V2DUTY*motor_V_1;
+	    duty_1 = V2DUTY*motor_V_1;
+	    if (duty_1 > 399)
+	    	duty_1 = 399;
+
+
 	    // command a motor
 		/* calculate duty properly */
 		if (duty_1 >= 0) {
 
 			// rotate forward
 			// alternate between forward and coast
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)duty_1);
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)duty_1);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
 
 
 			/* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)TIM8_ARR_VALUE);
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, TIM8_ARR_VALUE - duty_1);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)TIM8_ARR_VALUE);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)(TIM8_ARR_VALUE - duty_1));
 
 		} else { // rotate backward
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
@@ -244,89 +317,43 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 
 	    int32_t duty_2 = V2DUTY*motor_V_2;
+	    if (duty_2 > 399)
+	   	   	 duty_2 = 399;
 	    // command a motor
 		/* calculate duty properly */
 		if (duty_2 >= 0) {
 
 			// rotate forward
 			// alternate between forward and coast
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)duty_2);
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)duty_2);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
 
 
 			/* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)TIM8_ARR_VALUE);
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, TIM8_ARR_VALUE - duty_2);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)TIM8_ARR_VALUE);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)(TIM8_ARR_VALUE - duty_2));
 
 		} else { // rotate backward
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)-duty_2);
 		}
      	/*	Prepare data packet */
-		data.w1 = reference_rpm_L;
-		data.w2 = current_rpm_1;
-		data.u1 = tracking_error_1;
-		data.u2 = controller_return_1;
+		data_log.w1 = reference_rpm_L;
+		data_log.w2 = current_rpm_1;
+		data_log.u1 = tracking_error_1;
+		data_log.u2 = controller_return_1;
 
 
-		data.x1 = reference_rpm_R;
-		data.x2 = current_rpm_2;
-		data.y1 = tracking_error_2;
-		data.y2 = controller_return_2;
+		data_log.x1 = reference_rpm_R;
+		data_log.x2 = current_rpm_2;
+		data_log.y1 = tracking_error_2;
+		data_log.y2 = controller_return_2;
 
-		ertc_dlog_send(&logger, &data, sizeof(data));
+		ertc_dlog_send(&logger, &data_log, sizeof(data_log));
 	}
 }
 
-float Kp = 0.34;
-float KI = 0.2;
 
-
-float PI_controller (float error){
-	float P = Kp * error;
-	static float I = 0;
-	I = I + error * KI * TS;
-	if(I>10){
-		I=10;
-	}
-	return P + I;
-}
-
-void findBinary(int decimal, int * binary){
-	//int base = 1;
-	int i =0;
-   while(decimal > 0){
-	   int rem = decimal % 2;
-	   binary[i] = rem;
-	   i++;
-	   decimal = decimal / 2;
-	   //base = base * 10;
-   }
-   //printf("Binary: %d\n\r", binary);
-//   return binary;
-}
-
-int calc_error_line (int binary[]){
-	float distance_from_middle[8]={0};
-	float sum_dist = 0;
-	int sum_binary = 0;
-	for(int n=0;n<8;n++){
-		sum_binary += binary[n];
-		distance_from_middle[n]=((7.0/2.0)-n)*4;
-		sum_dist += binary[n]*distance_from_middle[n];
-	}
-	float line_error = sum_dist / sum_binary;
-	return line_error;
-}
-
-void calc_yaw_error(float current_rpm_1,float current_rpm_2){
-	float omega_R = current_rpm_1 *2*3.14/60;
-	float omega_L = current_rpm_2 *2*3.14/60;
-	float linear_speed_R = 34*omega_R;
-	float linear_speed_L = 34*omega_L;
-	float robot_rotation_speed = (linear_speed_R-linear_speed_L)/165;
-	static float last_time = 0;
-}
 //#define N 8  //number of the sensors
 /* USER CODE END 0 */
 
@@ -337,8 +364,7 @@ void calc_yaw_error(float current_rpm_1,float current_rpm_2){
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	uint8_t data;
-	HAL_StatusTypeDef status;
+
 	//float w[N];
   /* USER CODE END 1 */
 
@@ -379,8 +405,8 @@ int main(void)
   MX_TIM6_Init();
   /* USER CODE BEGIN 2 */
 
-  logger.uart_handle = huart3; // for serial
-  //logger.uart_handle = huart2; // for wifi
+//  logger.uart_handle = huart3; // for serial
+  logger.uart_handle = huart2; // for wifi
 
   /* Reset LCD */
   HAL_GPIO_WritePin(GPIO_OUT_SPI_CS_LCD_GPIO_Port, GPIO_OUT_SPI_CS_LCD_Pin, GPIO_PIN_SET);
@@ -452,7 +478,7 @@ int main(void)
 
   /* Start speed ctrl ISR */
   HAL_TIM_Base_Start_IT(&htim6);
-  uint8_t lineData;
+
 
   /* USER CODE END 2 */
 
@@ -461,15 +487,15 @@ int main(void)
 
   while (1)
   {
-	  status = HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR1 << 1, REG_DATA_B, 1, &lineData, 1, I2C_TIMEOUT);
-	  int binary[8] = {0};
-	  findBinary(lineData, binary);
-	  float line_error = calc_error_line(binary);
-	  //phi_err = line_error/85;
-	  calc_yaw_error()
 
-	  reference_rpm_L = 100 - line_error*12;
-	  reference_rpm_R = 100 + line_error*12;
+
+	 // reference_rpm_L = 100 - line_error*12;
+	//  reference_rpm_R = 100 + line_error*12;
+
+
+
+	  //reference_rpm_L = 150 - yaw_err*18;
+	  //reference_rpm_R = 150 + yaw_err*18; FASTEST
 
 	  printf("Decimal is: %d \n\r", lineData);
 	  //HAL_Delay(100);
