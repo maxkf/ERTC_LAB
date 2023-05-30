@@ -121,8 +121,9 @@ float  reference_rpm_L;
 float  reference_rpm_R;
 
 struct datalog {
-	float w1, w2 , u1, u2;
-	float x1, x2 , y1, y2;
+	float w1, w2;
+	float u1, u2;
+	float x1, x2;
 } data_log;
 
 float Kp = 0.34;
@@ -200,8 +201,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		  float yaw_err = calc_yaw_error(line_error);
 
 
-		  reference_rpm_L = 170 - yaw_err*22;
-		  reference_rpm_R = 170 + yaw_err*22;
+		 // reference_rpm_L = 170 - yaw_err*22;
+		  //reference_rpm_R = 170 + yaw_err*22;
+		  reference_rpm_L = 100 - yaw_err*12;
+		  reference_rpm_R = 100 + yaw_err*12;
 
 
 		uint32_t TIM3_CurrentCount , TIM4_CurrentCount;
@@ -340,14 +343,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
      	/*	Prepare data packet */
 		data_log.w1 = reference_rpm_L;
 		data_log.w2 = current_rpm_1;
-		data_log.u1 = tracking_error_1;
-		data_log.u2 = controller_return_1;
 
+		data_log.u1 = line_error;
+		data_log.u2 = yaw_err;
 
 		data_log.x1 = reference_rpm_R;
 		data_log.x2 = current_rpm_2;
-		data_log.y1 = tracking_error_2;
-		data_log.y2 = controller_return_2;
 
 		ertc_dlog_send(&logger, &data_log, sizeof(data_log));
 	}

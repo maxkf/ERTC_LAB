@@ -1,7 +1,8 @@
 %YAML 1.2
 ---
-- Motor_1 : { reference_rpm: float, current_rpm_1: float, tracking_error_1: float}
-- controller_1_data: { controller_return_1: float }
+- Motor_1 : { reference_rpm_L: float, current_rpm_L: float}
 
-- Motor_2: { reference_rpm: float, current_rpm_2: float, tracking_error_2: float}
-- controller_2_data: { controller_return_2: float }
+- General: { Line_error: float, Yaw_error: float}
+
+- Motor_2: { reference_rpm_R: float, current_rpm_R: float}
+
