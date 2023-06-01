@@ -48,6 +48,7 @@
 #define DUTY2V	((float)VBATT/(TIM8_ARR_VALUE+1))
 
 #define RPM2RADS	2*M_PI/60
+#define ABS(x) (x > 0 ? x : -x)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -134,9 +135,9 @@ float PI_controller (float error){
 	float P = Kp * error;
 	static float I = 0;
 	I = I + error * KI * TS;
-	if(I>10){
-		I=10;
-	}
+	//if(I>10){
+	//	I=10;
+	//}
 	return P + I;
 }
 
@@ -168,8 +169,8 @@ int calc_error_line (int binary[]){
 }
 
 float calc_yaw_error(float line_error){
-	/*float omega_R = current_rpm_1 *2*3.14/60;
-	float omega_L = current_rpm_2 *2*3.14/60;
+	/*float omega_R = current_rpm_R *2*3.14/60;
+	float omega_L = current_rpm_L *2*3.14/60;
 	float linear_speed_R = 34*omega_R;
 	float linear_speed_L = 34*omega_L;
 	float robot_rotation_speed = (linear_speed_R-linear_speed_L)/165;
@@ -200,11 +201,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		  //phi_err = line_error/85;
 		  float yaw_err = calc_yaw_error(line_error);
 
-
 		 // reference_rpm_L = 170 - yaw_err*22;
 		  //reference_rpm_R = 170 + yaw_err*22;
-		  reference_rpm_L = 100 - yaw_err*12;
-		  reference_rpm_R = 100 + yaw_err*12;
+
+		// reference_rpm_L = 100 - yaw_err*ABS(yaw_err); // workes great
+		// reference_rpm_R = 100 + yaw_err*ABS(yaw_err);
+
+		reference_rpm_L = 100 ;
+		reference_rpm_R = 100 ;
 
 
 		uint32_t TIM3_CurrentCount , TIM4_CurrentCount;
@@ -236,8 +240,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		TIM3_PreviousCount = TIM3_CurrentCount;
 	    // 3. compute the motor speed, in [rpm] for example
 
-		float current_rpm_1 = ((float)TIM3_DiffCount/(2.0*1920.0))*(60.0/TS );
-	    tracking_error_1 = reference_rpm_R - current_rpm_1;
+		float current_rpm_R = ((float)TIM3_DiffCount/(2.0*1920.0))*(60.0/TS );
+	    tracking_error_1 = reference_rpm_R - current_rpm_R;
 
 
 
@@ -263,8 +267,8 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 		TIM4_PreviousCount = TIM4_CurrentCount;
 
-		float current_rpm_2 = ((float)TIM4_DiffCount/(2.0*1920.0))*(60.0/TS );
-	    tracking_error_2 = reference_rpm_L - current_rpm_2;
+		float current_rpm_L = ((float)TIM4_DiffCount/(2.0*1920.0))*(60.0/TS );
+	    tracking_error_2 = reference_rpm_L - current_rpm_L;
 
 	    /* 4. compute the tracking error
 	    * 5. compute the proportional term
@@ -301,13 +305,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 			// rotate forward
 			// alternate between forward and coast
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)duty_1);
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)duty_1);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
 
 
 			/* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)TIM8_ARR_VALUE);
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)(TIM8_ARR_VALUE - duty_1));
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)TIM8_ARR_VALUE);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)(TIM8_ARR_VALUE - duty_1));
 
 		} else { // rotate backward
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
@@ -328,13 +332,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 			// rotate forward
 			// alternate between forward and coast
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)duty_2);
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)duty_2);
+	        __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
 
 
 			/* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)TIM8_ARR_VALUE);
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)(TIM8_ARR_VALUE - duty_2));
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)TIM8_ARR_VALUE);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)(TIM8_ARR_VALUE - duty_2));
 
 		} else { // rotate backward
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
@@ -342,13 +346,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
      	/*	Prepare data packet */
 		data_log.w1 = reference_rpm_L;
-		data_log.w2 = current_rpm_1;
+		data_log.w2 = current_rpm_L;
 
 		data_log.u1 = line_error;
 		data_log.u2 = yaw_err;
 
 		data_log.x1 = reference_rpm_R;
-		data_log.x2 = current_rpm_2;
+		data_log.x2 = current_rpm_R;
 
 		ertc_dlog_send(&logger, &data_log, sizeof(data_log));
 	}
