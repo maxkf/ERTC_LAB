@@ -116,8 +116,8 @@ float PI_controller (float error);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-float controller_return_1 ,motor_V_1  ,tracking_error_1;
-float controller_return_2 ,motor_V_2  ,tracking_error_2;
+float controller_return_R ,motor_V_R  ,tracking_error_R;
+float controller_return_L ,motor_V_L  ,tracking_error_L;
 float  reference_rpm_L;
 float  reference_rpm_R;
 
@@ -130,31 +130,28 @@ struct datalog {
 float Kp = 0.34;
 float KI = 0.2;
 
-
 float PI_controller (float error){
 	float P = Kp * error;
 	static float I = 0;
 	I = I + error * KI * TS;
-	//if(I>10){
-	//	I=10;
-	//}
+	if(I>10){ // anti windup
+		I=10;
+	}
 	return P + I;
 }
 
+// converts integer to a binary array
 void findBinary(int decimal, int * binary){
-	//int base = 1;
 	int i =0;
    while(decimal > 0){
 	   int rem = decimal % 2;
 	   binary[i] = rem;
 	   i++;
 	   decimal = decimal / 2;
-	   //base = base * 10;
    }
-   //printf("Binary: %d\n\r", binary);
-//   return binary;
 }
 
+// calculates the tracking error for the line sensor
 int calc_error_line (int binary[]){
 	float distance_from_middle[8]={0};
 	float sum_dist = 0;
@@ -169,12 +166,6 @@ int calc_error_line (int binary[]){
 }
 
 float calc_yaw_error(float line_error){
-	/*float omega_R = current_rpm_R *2*3.14/60;
-	float omega_L = current_rpm_L *2*3.14/60;
-	float linear_speed_R = 34*omega_R;
-	float linear_speed_L = 34*omega_L;
-	float robot_rotation_speed = (linear_speed_R-linear_speed_L)/165;
-	static float last_time = 0;*/
 	float phi_err = line_error/85;
 	float yaw_err = phi_err * (165/2);
 	return yaw_err;
@@ -183,44 +174,37 @@ float calc_yaw_error(float line_error){
 uint8_t lineData;
 uint8_t data;
 HAL_StatusTypeDef status;
-int32_t duty_1;
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	/* Speed ctrl routine */
-	if(htim->Instance == TIM6)
+	if(htim->Instance == TIM6) // check if interrupt came from timer
 	{
-		/*
-	    * 1. read the counter value from the encoder
-	    * 2. compute the difference between the current value and the old value
-	    */
+		// get the line sensor data
 		status = HAL_I2C_Mem_Read(&hi2c1, SX1509_I2C_ADDR1 << 1, REG_DATA_B, 1, &lineData, 1, I2C_TIMEOUT);
-		  int binary[8] = {0};
-		  findBinary(lineData, binary);
-		  float line_error = calc_error_line(binary);
-		  //phi_err = line_error/85;
-		  float yaw_err = calc_yaw_error(line_error);
+    
+    int binary[8] = {0};
+    findBinary(lineData, binary); // converts int to binary array
+    float line_error = calc_error_line(binary); // computes the line error calculation
+    float yaw_err = calc_yaw_error(line_error); // computes the yaw  error calculation
 
-		 // reference_rpm_L = 170 - yaw_err*22;
-		  //reference_rpm_R = 170 + yaw_err*22;
+		//reference_rpm_L = 170 - yaw_err*22; // pushing the limit
+    //reference_rpm_R = 170 + yaw_err*22;
 
-		// reference_rpm_L = 100 - yaw_err*ABS(yaw_err); // workes great
-		// reference_rpm_R = 100 + yaw_err*ABS(yaw_err);
-
-		reference_rpm_L = 100 ;
-		reference_rpm_R = 100 ;
-
-
+		reference_rpm_L = 100 - yaw_err*ABS(yaw_err); // workes great 
+		reference_rpm_R = 100 + yaw_err*ABS(yaw_err);
+    
 		uint32_t TIM3_CurrentCount , TIM4_CurrentCount;
 		int32_t TIM3_DiffCount , TIM4_DiffCount;
 		static uint32_t TIM3_PreviousCount = 0, TIM4_PreviousCount = 0;
 
+    // read the counter value from the encoder
 		TIM3_CurrentCount = __HAL_TIM_GET_COUNTER(&htim3);
 		TIM4_CurrentCount = __HAL_TIM_GET_COUNTER(&htim4);
 
-
+    //compute the difference between the current value and the old value
 		/*  evaluate increment of TIM3 counter from previous count  */
-		if (__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim3))
+		if (__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim3)) // right motor
 		{
 			/* check for counter underflow */
 			if (TIM3_CurrentCount <= TIM3_PreviousCount)
@@ -230,7 +214,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 		else
 		{
-		/* check for counter overflow */
+		  /* check for counter overflow */
 			if (TIM3_CurrentCount >= TIM3_PreviousCount)
 				TIM3_DiffCount = TIM3_CurrentCount - TIM3_PreviousCount;
 			else
@@ -238,17 +222,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		}
 
 		TIM3_PreviousCount = TIM3_CurrentCount;
-	    // 3. compute the motor speed, in [rpm] for example
-
-		float current_rpm_R = ((float)TIM3_DiffCount/(2.0*1920.0))*(60.0/TS );
-	    tracking_error_1 = reference_rpm_R - current_rpm_R;
-
-
-
-
 
 		/*  evaluate increment of TIM4 counter from previous count  */
-		if (__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim4))
+		if (__HAL_TIM_IS_TIM_COUNTING_DOWN(&htim4)) // left motor
 		{
 			/* check for counter underflow */
 			if (TIM4_CurrentCount <= TIM4_PreviousCount)
@@ -267,84 +243,59 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 		TIM4_PreviousCount = TIM4_CurrentCount;
 
+    // compute the motor speed in [rpm]
+		float current_rpm_R = ((float)TIM3_DiffCount/(2.0*1920.0))*(60.0/TS );
+	  tracking_error_R = reference_rpm_R - current_rpm_R;
+
 		float current_rpm_L = ((float)TIM4_DiffCount/(2.0*1920.0))*(60.0/TS );
-	    tracking_error_2 = reference_rpm_L - current_rpm_L;
+	  tracking_error_L = reference_rpm_L - current_rpm_L;
 
-	    /* 4. compute the tracking error
-	    * 5. compute the proportional term
-	    * 6. compute the integral term (simplest way is to use forward Euler method) * u_int=u_int+Ki*TS*err
-	    * 7. calculate the PI signal and set the pwm of the motor properly
-	    */
-	     controller_return_1 = PI_controller(tracking_error_1);
-	     controller_return_2 = PI_controller(tracking_error_2);
+    // compute the tracking error via PI controller
+    controller_return_R = PI_controller(tracking_error_R);
+    controller_return_L = PI_controller(tracking_error_L);
 
-	     motor_V_1 = controller_return_1;
-	     motor_V_2 = controller_return_2;
+    motor_V_R = controller_return_R;
+    motor_V_L = controller_return_L;
 
+    // calculate duty cycle for motor
+    int32_t duty_R = V2DUTY*motor_V_R; 
+    int32_t duty_L = V2DUTY*motor_V_L;
 
-	     //anti windup
-	    /*if(motor_V_1 > 5)
-	    	motor_V_1 = 5;
-	    if(motor_V_1 < -5)
-	    	motor_V_1 = -5;
+    if (duty_R > 399)
+      duty_R = 399;
 
-	    if(motor_V_2 > 5)
-	    	motor_V_2 = 5;
-	    if(motor_V_2 < -5)
-	    	motor_V_2 = -5;
-*/
-
-	    duty_1 = V2DUTY*motor_V_1;
-	    if (duty_1 > 399)
-	    	duty_1 = 399;
-
-
-	    // command a motor
 		/* calculate duty properly */
-		if (duty_1 >= 0) {
-
-			// rotate forward
+		if (duty_R >= 0) { // rotate forward
 			// alternate between forward and coast
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)duty_1);
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)duty_R);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, 0);
 
-
-			/* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)TIM8_ARR_VALUE);
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)(TIM8_ARR_VALUE - duty_1));
-
+			// alternate between forward and brake, TIM8_ARR_VALUE is a define
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, (uint32_t)TIM8_ARR_VALUE);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)(TIM8_ARR_VALUE - duty_R));
 		} else { // rotate backward
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_1, 0);
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)-duty_1);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_2, (uint32_t)-duty_R);
 		}
-	   	    //command a motor
 
-
-
-
-
-	    int32_t duty_2 = V2DUTY*motor_V_2;
-	    if (duty_2 > 399)
-	   	   	 duty_2 = 399;
-	    // command a motor
+    if (duty_L > 399)
+          duty_L = 399;
+    
 		/* calculate duty properly */
-		if (duty_2 >= 0) {
-
-			// rotate forward
+		if (duty_L >= 0) { // rotate forward
 			// alternate between forward and coast
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)duty_2);
-	        __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
+			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)duty_L);
+	    //__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, 0);
 
-
-			/* alternate between forward and brake, TIM8_ARR_VALUE is a define*/
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)TIM8_ARR_VALUE);
-			//__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)(TIM8_ARR_VALUE - duty_2));
-
+			// alternate between forward and brake, TIM8_ARR_VALUE is a define
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, (uint32_t)TIM8_ARR_VALUE);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)(TIM8_ARR_VALUE - duty_L));
 		} else { // rotate backward
 			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_3, 0);
-			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)-duty_2);
+			__HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)-duty_L);
 		}
-     	/*	Prepare data packet */
+
+    /*	Prepare data packet */
 		data_log.w1 = reference_rpm_L;
 		data_log.w2 = current_rpm_L;
 
@@ -354,6 +305,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		data_log.x1 = reference_rpm_R;
 		data_log.x2 = current_rpm_R;
 
+    // send data to datalogger
 		ertc_dlog_send(&logger, &data_log, sizeof(data_log));
 	}
 }
@@ -492,23 +444,10 @@ int main(void)
 
   while (1)
   {
-
-
-	 // reference_rpm_L = 100 - line_error*12;
-	//  reference_rpm_R = 100 + line_error*12;
-
-
-
-	  //reference_rpm_L = 150 - yaw_err*18;
-	  //reference_rpm_R = 150 + yaw_err*18; FASTEST
-
-	  printf("Decimal is: %d \n\r", lineData);
-	  //HAL_Delay(100);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 	  ertc_dlog_update(&logger);
-
   }
   /* USER CODE END 3 */
 }
