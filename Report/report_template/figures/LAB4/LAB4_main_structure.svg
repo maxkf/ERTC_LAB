@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256.492pt" height="235.77149pt" viewBox="0 0 256.492 235.77149">
+<defs>
+<clipPath id="clip_58">
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M.000012539 0H841.5V594.75H.000012539Z" fill-rule="evenodd"/>
+</clipPath>
+<clipPath id="clip_59">
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M.000012539 0H841.5V594.75H.000012539Z" fill-rule="evenodd"/>
+</clipPath>
+<clipPath id="clip_60">
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M.000012539 0H841.5V594.75H.000012539Z" fill-rule="evenodd"/>
+</clipPath>
+<clipPath id="clip_61">
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M.000012539 0H841.5V594.75H.000012539Z" fill-rule="evenodd"/>
+</clipPath>
+<clipPath id="clip_62">
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M.000012539 0H841.5V594.75H.000012539Z" fill-rule="evenodd"/>
+</clipPath>
+<clipPath id="clip_63">
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M.000012539 0H841.5V594.75H.000012539Z" fill-rule="evenodd"/>
+</clipPath>
+<clipPath id="clip_64">
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M.000012539 0H841.5V594.75H.000012539Z" fill-rule="evenodd"/>
+</clipPath>
+</defs>
+<g>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M61.58 320.9H300.44V349.63999H61.58Z" fill="#4672c4" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width=".75" stroke-linecap="square" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#d2d2d2" d="M61.58 320.9H300.44V349.63999H61.58Z"/>
+<g clip-path="url(#clip_58)">
+<text fill="#feffff" xml:space="preserve" transform="matrix(1 0 -0 1 -53.11302 360.9723)" font-size="12" font-family="Calibri"><tspan y="-331.33" x="98 102.48801 108.464008 112.232 115.976009 118.964008 124.94 130.22 136.196 139.20801 145.20801 151.19602 154.94002 160.92803 163.91603 167.64804 171.39205 178.12406 187.12406 190.11206 193.10005 199.10005 202.83206 206.57607 212.56407 217.05208 223.02808 229.05208 232.04009 236.54009 242.51609 248.54009 253.77208 259.77207">retrieve data from infrared sensor</tspan></text>
+</g>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M61.587 275.28H300.447V304.02H61.587Z" fill="#4672c4" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width=".75" stroke-linecap="square" stroke-miterlimit="10" stroke-linejoin="miter" fill="none" stroke="#d2d2d2" d="M61.587 275.28H300.447V304.02H61.587Z"/>
+<g clip-path="url(#clip_59)">
+<text fill="#feffff" xml:space="preserve" transform="matrix(1 0 -0 1 -53.11302 360.9723)" font-size="12" font-family="Calibri"><tspan y="-285.65" x="135.38 140.64801 145.92801 148.916 154.184 160.20801 163.196 169.20801 172.95201">calculate</tspan></text>
+</g>
+<g clip-path="url(#clip_60)">
+<text fill="#feffff" xml:space="preserve" transform="matrix(1 0 -0 1 -53.11302 360.9723)" font-size="12" font-family="Calibri"><tspan y="-285.65" x="178.88"> </tspan></text>
+</g>
+<g clip-path="url(#clip_61)">
+<text fill="#feffff" xml:space="preserve" transform="matrix(1 0 -0 1 -53.11302 360.9723)" font-size="12" font-family="Calibri"><tspan y="-285.65" x="181.58 184.592 186.83599 193.60399 199.61598 201.872 207.88399 212.396 216.176 222.944">line error</tspan></text>
+</g>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#4672c4" d="M181.01 320.9V314.56H181.02V310.18"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M184.54 311.06 181.02 304.02 177.5 311.06H184.54Z" fill="#4672c4" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M61.587 229.67H300.447V258.41H61.587Z" fill="#4672c4" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width=".75" stroke-linecap="square" stroke-miterlimit="2" stroke-linejoin="miter" fill="none" stroke="#d2d2d2" d="M61.587 229.67H300.447V258.41H61.587Z"/>
+<g clip-path="url(#clip_62)">
+<text fill="#feffff" xml:space="preserve" transform="matrix(1 0 -0 1 -53.11302 360.9723)" font-size="12" font-family="Calibri"><tspan y="-239.98" x="134.4 139.632 144.876 147.864 153.09601 159.09601 162.084 168.072 171.81601 177.792 180.80402 186.04802 191.29203 200.28003 203.26804 208.52404 213.01204 217.50005 223.50005">calculate yaw error</tspan></text>
+</g>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M61.587 184.06H300.447V212.8H61.587Z" fill="#4672c4" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width=".75" stroke-linecap="square" stroke-miterlimit="2" stroke-linejoin="miter" fill="none" stroke="#d2d2d2" d="M61.587 184.06H300.447V212.8H61.587Z"/>
+<g clip-path="url(#clip_63)">
+<text fill="#feffff" xml:space="preserve" transform="matrix(1 0 -0 1 -53.11302 360.9723)" font-size="12.025" font-family="Calibri"><tspan y="-194.33" x="123 128.2429 133.49784 136.48003 141.72293 147.7234 150.7056 156.69405 160.44585 166.4343 169.42853 173.18033 179.16878 182.92057 188.90901 193.40637 198.6613 205.41936 210.66226 216.65071 218.9114 223.39675 229.39722">calculate reference rpm</tspan></text>
+</g>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M61.594 138.45H300.454V167.19H61.594Z" fill="#4672c4" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width=".75" stroke-linecap="square" stroke-miterlimit="2" stroke-linejoin="miter" fill="none" stroke="#d2d2d2" d="M61.594 138.45H300.454V167.19H61.594Z"/>
+<g clip-path="url(#clip_64)">
+<text fill="#feffff" xml:space="preserve" transform="matrix(1 0 -0 1 -53.11302 360.9723)" font-size="12.025" font-family="Calibri"><tspan y="-148.65" x="98.8 102.53978 108.52823 114.51668 120.54121 123.52341 127.27521 133.26366 137.01544 143.00389 147.50125 153.4897 159.5022 164.7451 170.73355 173.72779 177.47959 183.48006 193.2203 196.20252 199.95432 206.68831 208.93698 213.42232 219.42279 225.41124 228.40547 237.40016 244.13416 247.88596 254.61995 258.37178">feed reference rpm to the motors</tspan></text>
+</g>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#4672c4" d="M181.02 275.28V264.57"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M184.54 265.45 181.02 258.41 177.5 265.45H184.54Z" fill="#4672c4" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#4672c4" d="M181.02 229.67V218.96"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M184.54 219.84 181.02 212.8 177.5 219.84H184.54Z" fill="#4672c4" fill-rule="evenodd"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#4672c4" d="M181.02 184.06V177.73 173.35"/>
+<path transform="matrix(1,0,0,-1,-53.11302,360.9723)" d="M184.54 174.23 181.02 167.19 177.5 174.23H184.54Z" fill="#4672c4" fill-rule="evenodd"/>
+</g>
+</svg>
