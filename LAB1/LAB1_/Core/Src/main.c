@@ -122,7 +122,7 @@ int findBinary(int decimal){
 int inputUser = 0;
 int counter = 0;
 int flag=0;
-int freq;
+int freq=0;
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   //HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_5);

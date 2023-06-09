@@ -1,0 +1,38 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {0}Abstract}{2}{}%
+\contentsline {section}{\numberline {1}Laboratory 1: I2C}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Description}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Inter-Integrated Circuit (I2C)}{3}{}%
+\contentsline {subsection}{\numberline {1.3}SX1509 I/O Expander}{4}{}%
+\contentsline {subsection}{\numberline {1.4}APIs}{5}{}%
+\contentsline {subsection}{\numberline {1.5}Exercise 1:}{7}{}%
+\contentsline {subsubsection}{\numberline {1.5.1}Description}{7}{}%
+\contentsline {subsubsection}{\numberline {1.5.2}Code}{7}{}%
+\contentsline {subsubsection}{\numberline {1.5.3}Code Explanation:}{7}{}%
+\contentsline {subsection}{\numberline {1.6}Exercise 2:}{8}{}%
+\contentsline {subsubsection}{\numberline {1.6.1}Description:}{8}{}%
+\contentsline {subsubsection}{\numberline {1.6.2}Code:}{8}{}%
+\contentsline {subsubsection}{\numberline {1.6.3}Code Explanation:}{9}{}%
+\contentsline {subsection}{\numberline {1.7}Exercise 3:}{10}{}%
+\contentsline {subsubsection}{\numberline {1.7.1}Description:}{10}{}%
+\contentsline {subsubsection}{\numberline {1.7.2}Code:}{10}{}%
+\contentsline {subsubsection}{\numberline {1.7.3}Code Explanation:}{10}{}%
+\contentsline {subsection}{\numberline {1.8}Exercise 4:}{11}{}%
+\contentsline {subsubsection}{\numberline {1.8.1}Description:}{11}{}%
+\contentsline {subsubsection}{\numberline {1.8.2}Code:}{11}{}%
+\contentsline {subsubsection}{\numberline {1.8.3}Code Explanation:}{11}{}%
+\contentsline {section}{\numberline {2}Laboratory 2: Open loop control (camera stabilizer)}{12}{}%
+\contentsline {subsection}{\numberline {2.1}IMU}{12}{}%
+\contentsline {subsection}{\numberline {2.2}Servo Motor}{13}{}%
+\contentsline {subsection}{\numberline {2.3}Exercise1:}{14}{}%
+\contentsline {subsection}{\numberline {2.4}Bonus:}{15}{}%
+\contentsline {section}{\numberline {3}Laboratory 3: Motor Control}{17}{}%
+\contentsline {subsection}{\numberline {3.1}Relevant theoretical notions}{17}{}%
+\contentsline {subsection}{\numberline {3.2}Another sub}{17}{}%
+\contentsline {subsection}{\numberline {3.3}Another sub}{17}{}%
+\contentsline {section}{\numberline {4}Laboratory 4: Line Following}{18}{}%
+\contentsline {subsection}{\numberline {4.1}Relevant theoretical notions}{18}{}%
+\contentsline {subsection}{\numberline {4.2}Another sub}{18}{}%
+\contentsline {subsection}{\numberline {4.3}Another sub}{18}{}%
+\contentsline {section}{\numberline {A}Section in the Appendix}{19}{}%
+\contentsline {subsection}{\numberline {A.1}Subsection in the Appendix}{19}{}%
