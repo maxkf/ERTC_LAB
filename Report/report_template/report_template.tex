@@ -671,12 +671,158 @@ As it is clear to obtain the $\theta$ we have to put the gyroscope data measured
 
 \newpage
 \section{Laboratory 4: Line Following}
+The goal of this laboratory was to combine the line sensor from
+Lab 1 and the motor controller from Lab 3 to make the Turtlebot 
+follow a given line autonomously.  
+\begin{itemize}
+    \item \textbf{The infrared line sensor:} 
+\end{itemize}
+We are using a Pololu QTR reflectance sensor which can detect how much infrared 
+light has been reflected from a surface. With a certain threshold we can than determine 
+if a surface is dark or light. The installed sensor is located on the lower front of the
+ robot. It is about 10 cm wide and consists of an array of 8 photo diodes with each one 
+ photo transistor. The distance between every sensor is 8 mm. This gives us a total of 8
+  individual sensors that can differentiate between dark and light areas. This data is 
+ retrieved by the controller MCU through a port expander board using a I2C connection.
+  The sensor data encoded in a binary format and received as an integer. To retrieve
+  the original data, it is necessary to convert the integer back to a binary number.
+ This binary number has 8 bits, each storing the value of one sensor.  
+ \begin{itemize}
+    \item \textbf{Properties of the line:} 
+\end{itemize}
+The line is assumed to be wide enough to trigger at least one of the infrared sensors 
+and at most two at the same time. The goal is to create a controller algorithm that 
+keeps the line between the two middle sensors 3 and 4. We are implementing a tracking 
+error and set this position to tracking error 0. We then define the tracking error to 
+be greater than zero when the line is on the left side of the sensor. If the tracking 
+error is less than zero, the line is on the right side of the sensor. Figure \ref{fig:line}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.90\textwidth, height=0.25\textheight]{figures/line.png}
+    \caption{Spacing of the infrared sensors}
+    \label{fig:line}
+\end{figure}
+\newpage
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.45\textwidth, height=0.25\textheight]{figures/procedure.png}
+    \caption{Main structure of the line following code}
+    \label{fig:pro}
+\end{figure}
+In LAB1 we already created a function to get the binary values of the integer we
+ received by the line sensor. However, the function would give us an integer again
+  with all the bits in a single number. This was not a very useful implementation.
+  We needed to get the bits in an array. We define an empty array in the callback
+ function (Code \ref{lst:callback}) and give the pointer to the findBinary function. The basic
+ decimal to binary converter in form of a while function would then store every bit in
+  this array, Code \ref{lst:binary}.
+\begin{lstlisting}[language=C, caption={converts integer to a binary array}, label={lst:binary} ]
+void findBinary(int decimal, int * binary){
+    int i =0;
+    while(decimal > 0){
+        int rem = decimal % 2;
+        binary[i] = rem;
+        i++;
+        decimal = decimal / 2;
+       }
+}
+\end{lstlisting}
+\begin{lstlisting}[language=C, caption={Top part of the timer callback function }, label={lst:callback} ]
+    void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	/* Speed ctrl routine */
+	if(htim->Instance == TIM6) // check if interrupt came from timer
+	{
+		// get the line sensor data
+		status = HAL_I2C_Mem_Read(&hi2c1,
+                    SX1509_I2C_ADDR1 << 1,
+                    REG_DATA_B, 1,
+                    &lineData, 1,
+                    I2C_TIMEOUT);
+    int binary[8] = {0};
+    findBinary(lineData, binary); // converts int to binary array
+    
+\end{lstlisting}
+The calc\_error\_line function shown in Code \ref{lst:calcer} does the calculation of the 
+line error. The input of this function is an 8-dimensional array, containing
+the state of each infrared sensor coded in binary. A logical one means, that
+the corresponding sensor has detected a dark spot. In the for loop we iterate
+through every value in the binary[] array, ergo through all sensors data. We 
+calculate the sum of the binary[] array to get the total number of triggered 
+sensors. Furthermore, we are filling the distance\_from\_middle array with the 
+ opposing distance of every sensor from the middle. The distance between every
+ sensor is 4mm. These values get negative to indicate a distance to the left and 
+positive to indicate a distance to the right. The sum\_dist value is the sum of
+every distance from the center if the sensor was activated. Calculating the 
+line\_error by dividing the sum of the distance of each activated sensor with
+ the total number of activated sensors. This line\_error ten represents the 
+ offset of the black line from the center, regardless of how wide the line is.
+  Even if only one sensor is not activated, we still get a useful line error value. 
+\begin{lstlisting}[language=C, caption={Function to calculate the line error based on a binary array }, label={lst:calcer} ]
+int calc_error_line (int binary[]){
+    float distance_from_middle[8]={0};
+    float sum_dist = 0;
+    int sum_binary = 0;
+    for(int n=0;n<8;n++){
+        sum_binary += binary[n];
+        distance_from_middle[n]=((7.0/2.0)-n)*4;
+        sum_dist += binary[n]*distance_from_middle[n];
+    }
+    float line_error = sum_dist / sum_binary;
+    return line_error;
+}
+\end{lstlisting}
 
-\subsection{Relevant theoretical notions}
-
-\subsection{Another sub}
-
-\subsection{Another sub}
+\begin{lstlisting}[language=C, caption={Conversion from line error to yaw error }, label={lst:yaw} ]
+float calc_yaw_error(float line_error){
+    float phi_err = line_error/85;
+    float yaw_err = phi_err * (165/2);
+    return yaw_err;
+}
+\end{lstlisting}
+The calc\_yaw\_error function in Code \ref{lst:yaw} calculates a much stabler result
+ for our error value. It includes the wheelbase dimension (D) and the 
+ distance between the line sensor and wheels (H). This determines the 
+ position of the turning point of the bot, which is between the two wheels, 
+ shown in Figure (\ref{fig:turt}) 
+ \begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.55\textwidth, height=0.35\textheight]{figures/tut.png}
+    \caption{Schematic of the wheelbase and line sensor placement\newline 
+    D=165 mm, H=85 mm}
+    \label{fig:turt}
+\end{figure}
+\newpage
+\begin{itemize}
+    \item \textbf{Calculating the reference for the motors}: 
+\end{itemize}
+Based on the yaw error, we can now calculate our reference for the two motors.
+Since our motor controller is designed to compute rotations per minute, we set 
+a base speed of 100 rpm and depending on the direction of the motor add or subtract
+our yaw error. To give the yaw error more effect on the base speed, we incorporated
+an additional gain. Testing different gains, we first found a relay able solution with
+a base speed of 100 rpm +- yaw\_error * 12. By Increasing the gain, we got better 
+performance in sharper corners. The drawback was increased instability
+ on the straight segments. Small changes in the yaw error multiplied with 
+ a high gain gave the bot a very shaky ride in straight segments. To furthermore 
+ improve the performance a linear or even an exponential gain was necessary. 
+ This would increase the impact of the yaw error in tighter corners and make 
+ sure to decrease the gain when the line is going straight. The robot would 
+ be very stable on straight lines and keep its agile performance in sharp corners. 
+ We tried implementing different if statements to check if the yaw error was in
+  a certain range. Then we could set a different gain accordingly. This worked 
+  but needed a lot of tuning of all the values. In the end we saw that the values
+   where basically the same as the yaw error itself.  
+ A very simple solution was to square the yaw error.
+  This would increase the gain linearly. To keep the
+   sign of the yaw error, the absolute value of the yaw 
+   error was multiplied by itself, see Code \ref{lst:refre}. For tuning
+    this setup to use different base speeds it is possible to
+     also add a gain to increase the impact of the squared yaw error.   
+\begin{lstlisting}[language=C, caption={Calculating the reference signals for the motors}, label={lst:refre} ]
+reference_rpm_L = 100 - yaw_err*ABS(yaw_err); // workes great 
+reference_rpm_R = 100 + yaw_err*ABS(yaw_err);
+\end{lstlisting}
 
 \clearpage
 \appendix
