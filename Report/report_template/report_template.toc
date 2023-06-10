@@ -16,20 +16,31 @@
 \contentsline {subsection}{\numberline {1.7}Exercise 3:}{10}{}%
 \contentsline {subsubsection}{\numberline {1.7.1}Description:}{10}{}%
 \contentsline {subsubsection}{\numberline {1.7.2}Code:}{10}{}%
-\contentsline {subsubsection}{\numberline {1.7.3}Code Explanation:}{10}{}%
 \contentsline {subsection}{\numberline {1.8}Exercise 4:}{11}{}%
 \contentsline {subsubsection}{\numberline {1.8.1}Description:}{11}{}%
 \contentsline {subsubsection}{\numberline {1.8.2}Code:}{11}{}%
-\contentsline {subsubsection}{\numberline {1.8.3}Code Explanation:}{11}{}%
-\contentsline {section}{\numberline {2}Laboratory 2: Open loop control (camera stabilizer)}{12}{}%
-\contentsline {subsection}{\numberline {2.1}IMU}{12}{}%
-\contentsline {subsection}{\numberline {2.2}Servo Motor}{13}{}%
-\contentsline {subsection}{\numberline {2.3}Exercise1:}{14}{}%
-\contentsline {subsection}{\numberline {2.4}Bonus:}{15}{}%
+\contentsline {subsubsection}{\numberline {1.8.3}Code Explanation:}{12}{}%
+\contentsline {section}{\numberline {2}Laboratory 2: Open loop control (camera stabilizer)}{13}{}%
+\contentsline {subsection}{\numberline {2.1}IMU}{13}{}%
+\contentsline {subsection}{\numberline {2.2}Servo Motor}{14}{}%
+\contentsline {subsection}{\numberline {2.3}Exercise1:}{15}{}%
+\contentsline {subsection}{\numberline {2.4}Bonus:}{16}{}%
 \contentsline {section}{\numberline {3}Laboratory 3: Motor Control}{17}{}%
-\contentsline {subsection}{\numberline {3.1}Relevant theoretical notions}{17}{}%
-\contentsline {subsection}{\numberline {3.2}Another sub}{17}{}%
-\contentsline {subsection}{\numberline {3.3}Another sub}{17}{}%
-\contentsline {section}{\numberline {4}Laboratory 4: Line Following}{18}{}%
-\contentsline {section}{\numberline {A}Section in the Appendix}{22}{}%
-\contentsline {subsection}{\numberline {A.1}Subsection in the Appendix}{22}{}%
+\contentsline {subsection}{\numberline {3.1}Description}{17}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}DC Motor}{17}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}DRV8871}{18}{}%
+\contentsline {subsubsection}{\numberline {3.1.3}PWM Setting}{20}{}%
+\contentsline {subsubsection}{\numberline {3.1.4}Position Encoder}{20}{}%
+\contentsline {subsubsection}{\numberline {3.1.5}PID Controller:}{20}{}%
+\contentsline {subsubsection}{\numberline {3.1.6}Anti-Windup feature}{20}{}%
+\contentsline {subsection}{\numberline {3.2}Implementation details}{21}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Hardware setup and peripheral list}{21}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Motor and Encoder}{21}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}PWM}{22}{}%
+\contentsline {subsection}{\numberline {3.3}Exercises}{22}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Exercise1}{22}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Exercise2}{26}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}Exercise Bonus}{26}{}%
+\contentsline {section}{\numberline {4}Laboratory 4: Line Following}{29}{}%
+\contentsline {section}{\numberline {A}Section in the Appendix}{33}{}%
+\contentsline {subsection}{\numberline {A.1}Subsection in the Appendix}{33}{}%

@@ -190,7 +190,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
 			     //anti windup
 
-				/*if(motor_V_R > 4)
+				if(motor_V_R > 4)
 					motor_V_R = 4;
 				if(motor_V_R < -4)
 					motor_V_R = -4;
@@ -198,7 +198,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 			    if(motor_V_L > 4)
 			    	motor_V_L = 4;
 			    if(motor_V_L < -4)
-			    	motor_V_L = -4;*/
+			    	motor_V_L = -4;
 
 
 		    // calculate duty cycle for motor
