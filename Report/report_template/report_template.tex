@@ -65,7 +65,7 @@
 	\begin{center}
 		\vspace{2cm}
 		\begin{Large} 
-                Maximillime - (2096189) \\
+                Maximilian Kloevekorn-Fischer - (2096189) \\
                 Mohammadjavad Rajabi - (2085121) \\
                 Pouria Zakariapour - (2072836) \\
                 Parsa Majidi - (2080216)  \\
@@ -78,8 +78,7 @@
 \tableofcontents
 \newpage
 \section{Abstract}
-During this course we worked with a turtlebot that you can see in the Figure \ref{fig:turtlebot}
-The TurtleBot has several buttons, switches, and LEDs connected to the STM32F767 GPIOs
+During this course we worked on a mobile robotics platform equipped with motors, sensors, interfaces, and different processing units. In the following report it will be referenced as TurtleBot shown in Figure \ref{fig:turtlebot}. The main processing unit is the STM32F767 microcontroller, it is connected directly or indirectly to all inputs and outputs via GPIOs.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.4\textwidth]{figures/turtlebot.jpg}
@@ -89,7 +88,7 @@ The TurtleBot has several buttons, switches, and LEDs connected to the STM32F767
 
 \newpage
 \section{Laboratory 1: I2C}
-The purpose of this lab can be categorized like below:
+The purpose of this lab can be categorized as follows:
 \begin{itemize}
     \item Inter-Integrated Circuit (I2C)
     \item SX1509 I/O Expander
@@ -116,8 +115,7 @@ Each device on the I2C bus has a specific device address to differentiate betwee
 other devices that are on the same I2C bus. Many slave devices will require configuration upon startup to set the behavior of
 the device. This is typically done when the master accesses the slave's internal
 register maps, which have unique register addresses. A device can have one or
-multiple registers where data is stored, written, or read. Many slave devices will require configuration upon startup to set the behavior of
-the device. The physical I2C interface consists of the serial clock (SCL) and serial data (SDA) lines. 
+multiple registers where data is stored, written, or read. The physical I2C interface consists of the serial clock (SCL) and serial data (SDA) lines. 
 Both SDA and SCL lines must be connected to VCC through a pull-up resistor. The size
 of the pull-up resistor is determined by the amount of capacitance on the I2C lines.
 Shown in Figure (\ref{fig:pulling}) and Figure (\ref{fig:releasing})
@@ -141,16 +139,17 @@ The protocol transmits messages composed by a 9 bit packet. Each message begins 
 	\caption{Example of Start and Stop condition}
 	\label{fig:Stop}
 \end{figure}
-The start and stop conditions are characterized by data line that
+
+The start and stop conditions are characterized by the data line that
 moves towards low (start) or high (stop) during the clock high phase.
-Any other bit is set during the low clock phase; this ensure that the
+Any other bit is set during the low clock phase. This ensures that the
 start and stop condition can be discriminated from any other data
 transmission.\newline
 
 In this communication protocol, each packet consists of 9 bits. 
 The first 8 bits are transmitted by the sending unit, while the 9th bit is set by the receiving unit. 
 The order of the bits within each byte follows a "Most Significant Bit" (MSB) format. 
-The 9th bit serves as an acknowledgment, indicating whether the receiver acknowledges the data. 
+The 9th bit serves as an reply, indicating whether the receiver acknowledges the data. 
 To acknowledge, the receiver sets the data line to a low state at the 9th bit position.
 Example of Single Byte data transfer in Figure \ref{fig:Data}.
 \begin{figure}[!h]
@@ -161,10 +160,7 @@ Example of Single Byte data transfer in Figure \ref{fig:Data}.
 \end{figure}
 
 \subsection{SX1509 I/O Expander}
-The SX1509 is complete ultra
-low voltage 1.2V to 3.6V General Purpose parallel
-Input/Output (GPIO) expanders ideal for low power
-handheld battery powered equipment. This family of
+The SX1509 is a general purpose GPIO expander board, able to parallel handle several inputs and outputs. It has ultra-low voltage capabilities of 1.2 to 3.6 V, ideal for battery powered equipment. This family of
 GPIOs comes in 4-, 8-, 16-channel configuration and
 allows easy serial expansion of I/O through a
 standard 400kHz I2C interface. GPIO devices can
@@ -172,11 +168,9 @@ provide additional control and monitoring when the
 microcontroller or chipset has insufficient I/O ports, or
 in systems where serial communication and control
 from a remote location is advantageous. Keypad application is also supported with
-the on-chip scanning engine which enables
+the on-chip scanning engine. It enables
 continuous keypad monitoring up to 64 keys without
-any additional host interaction and further reduce the
-bus activity. The SX1509 has the ability to
-generate mask-programmable interrupts based on
+any additional host interaction, keeping the bus activity low. The SX1509 has the ability to generate mask-programmable interrupts based on
 falling/rising edge of any of its GPIO lines. \newline
 
 In this setup, two SX1509 modules are connected to the microcontroller using the I2C bus. 
@@ -184,17 +178,17 @@ Both devices share the same I2C line, specifically I2C1. To differentiate betwee
 we assign a specific slave address to each. 
 The first SX1509, referred to as sx1509\_1, is assigned
   the slave address 0x3E, while the second module, known as sx1509\_2, is associated with the slave address 0x3F.
-\\Allocated addresses of slaves implemented in Code \ref{lst:addr}
+\\Allocated addresses of slaves implemented in Listing \ref{lst:addr}
 \begin{lstlisting}[language=C, caption={I2C Addresses}, label={lst:addr} ]
 #define SX1509_I2C_ADDR1 0x3E       //SX1509 Proxy Sensors I2C address
 #define SX1509_I2C_ADDR2 0x3F       //SX1509 Keypad I2C address
 \end{lstlisting}
-The two lines of Code \ref{lst:add} are addressing of SX1509 registes for Keypad.
+The two lines of Listing \ref{lst:add} are addressing of SX1509 registes for Keypad.
 \begin{lstlisting}[language=C, caption={Keypad Data registers}, label={lst:add} ]
 #define REG_KEY_DATA_1  0x27        //RegKeyData1 Key value (column) 1111 1111
 #define REG_KEY_DATA_2  0x28	    //RegKeyData2 Key value (row) 1111 1111
 \end{lstlisting}
-This addressing scheme allows the microcontroller to communicate with each SX1509 module individually over the shared I2C bus.
+This addressing scheme allows the microcontroller to communicate with each SX1509 module individually over the shared I2C bus,
 Figure \ref{fig:SX1509}
 \begin{figure}[!h]
 	\centering
@@ -214,7 +208,7 @@ SPI (Serial Peripheral Interface), I2C (Inter-Integrated Circuit),
 timers, and more. It provides a higher-level programming interface,
 hiding the low-level hardware details and offering a set of functions that
 encapsulate complex hardware operations. \newline
-Following are useful HAL functions that we used during this Laboratory.
+Listing \ref{lst:read} are useful HAL functions that we used during this Laboratory.
 \begin{lstlisting}[language=C, caption={Reading Register values}, label={lst:read} ]
 HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t
     DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData,
@@ -1141,7 +1135,7 @@ the step response of the system (no matter implemented by which technique),
 \newpage
 \section{Laboratory 4: Line Following}
 The goal of this laboratory was to combine the line sensor from
-Lab 1 and the motor controller from Lab 3 to make the Turtlebot 
+Lab 1 and the motor controller from Lab 3 to make the TurtleBot 
 follow a given line autonomously.  
 \begin{itemize}
     \item \textbf{The infrared line sensor:} 
