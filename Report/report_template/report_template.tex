@@ -301,7 +301,7 @@ read data from an SX1509 device. The code reads the values from REG\_KEY\_DATA\_
 \subsubsection{Description:}
 In this exercise we had to extend the code of exercise 1 to handle the keypad interrupt. we printed which keypad button has been pressed.
 \subsubsection{Code:}
-\begin{lstlisting}[language=C, caption={Pressed Keypad Button}, label={lst:label} ]
+\begin{lstlisting}[language=C, caption={Pressed Keypad Button}, label={lst:keypadMapping} ]
 const char keypadLayout[4][4] = {
     {'*', '0', '#', 'D'},
     {'7', '8', '9', 'C'},
@@ -389,7 +389,7 @@ In this exercise we had to write a routine that reads the status of the
 line sensor and prints it. The routine checks the status with a polling
  period of 100ms.
 \subsubsection{Code:}
-\begin{lstlisting}[language=C, caption={Reading Line Data}, label={lst:label} ]
+\begin{lstlisting}[language=C, caption={Reading Line Data}, label={lst:ReadLine} ]
 int findBinary(int decimal){
 	int base = 1;
 	int binary = 0;
@@ -429,7 +429,7 @@ Hard way (Bonus): The frequency can be set “dynamically” by the user. For ex
 press 125\# the LED should blink with a frequency of 125Hz. If the user press 250\# the LED should
 blink with a frequency of 250Hz, and so on.
 \subsubsection{Code:}
-\begin{lstlisting}[language=C, caption={C code using listings}, label={lst:label} ]
+\begin{lstlisting}[language=C, caption={C code using listings}, label={lst:flagCode} ]
 //These are Global Variables//
 int inputUser = 0;
 int counter = 0;
@@ -494,7 +494,7 @@ The main loop continuously toggles the LED pin based on the entered frequency.
  If a valid frequency is entered (`inputUser` is not zero), the delay is
   calculated as the inverse of the frequency. Otherwise, a default delay of 
   1 second (corresponding to a frequency of 1Hz) is used.
-It is important to note that the code provided assumes the availability of 
+It is important to note that the code provided assumes the availability of a
 keypad layout and initialization code, as well as the necessary configuration 
 for GPIO pins and interrupts. Additionally, some aspects such as resetting 
 the variables after completing the LED blinking are missing and need to be added.
@@ -601,7 +601,7 @@ as shown in the figure below. Figure (\ref{fig:motor})
 Develop a control law to stabilize the camera’s tilt by utilizing data from an IMU. \newline
 First of all, we have to keep the camera aligned (0 degree) with the horizon. For
 this purpose, we should obtain the accelerometer and gyroscope data from the robot.
-\begin{lstlisting}[language=C, caption={C code using listings}, label={lst:label} ]
+\begin{lstlisting}[language=C, caption={C code using listings}, label={lst:cameraTilt} ]
 
     int8_t tilt = 0; 
     float angle = 0; 
@@ -655,7 +655,7 @@ measured on the y axis data in the while loop.
 
 To plot the\ data we use Matlab and the serial datalogger is invoked using serial\_datalog()
  function as below: 
-\begin{lstlisting}[language=Matlab, caption={}, label={lst:datalog} ]
+\begin{lstlisting}[language=Matlab, caption={}, label={lst:serialDatalog} ]
 data = serial_datalog('COM9',{'2*single','2*single'}, 'baudrate', 115200)
 \end{lstlisting}
 “COM9” is the port of the serial datalogger. “single,single” specifies the data 
@@ -672,7 +672,7 @@ Implement a control algorithm that implement a “smooth pan” control
 using data from the gyroscope.\newline
 Process is like exercise 1:
 
-\begin{lstlisting}[language=C, caption={}, label={lst:datalog} ]
+\begin{lstlisting}[language=C, caption={}, label={lst:smoothPan} ]
     int8_t pan = 0; 
 
     float angle = 0; 
@@ -702,7 +702,8 @@ As it is clear to obtain the $\theta$ we have to put the gyroscope data measured
     \label{fig:datal2}
 \end{figure}
 
-\newpage
+\clearpage
+
 \section{Laboratory 3: Motor Control}
 \subsection{Description}
 The goal of this laboratory is to implement a controller in order to drive and 
@@ -1172,13 +1173,14 @@ error is less than zero, the line is on the right side of the sensor. Figure \re
     \caption{Main structure of the line following code}
     \label{fig:pro}
 \end{figure}
+\newpage
 In LAB1 we already created a function to get the binary values of the integer we
  received by the line sensor. However, the function would give us an integer again
   with all the bits in a single number. This was not a very useful implementation.
   We needed to get the bits in an array. We define an empty array in the callback
- function (Code \ref{lst:callback}) and give the pointer to the findBinary function. The basic
+ function (Listing \ref{lst:callback}) and give the pointer to the findBinary function. The basic
  decimal to binary converter in form of a while function would then store every bit in
-  this array, Code \ref{lst:binary}.
+  this array, Listing \ref{lst:binary}.
 \begin{lstlisting}[language=C, caption={converts integer to a binary array}, label={lst:binary} ]
 void findBinary(int decimal, int * binary){
     int i =0;
@@ -1206,7 +1208,7 @@ void findBinary(int decimal, int * binary){
     findBinary(lineData, binary); // converts int to binary array
     
 \end{lstlisting}
-The calc\_error\_line function shown in Code \ref{lst:calcer} does the calculation of the 
+The calc\_error\_line function shown in Listing \ref{lst:calcer} does the calculation of the 
 line error. The input of this function is an 8-dimensional array, containing
 the state of each infrared sensor coded in binary. A logical one means, that
 the corresponding sensor has detected a dark spot. In the for loop we iterate
@@ -1218,7 +1220,7 @@ sensors. Furthermore, we are filling the distance\_from\_middle array with the
 positive to indicate a distance to the right. The sum\_dist value is the sum of
 every distance from the center if the sensor was activated. Calculating the 
 line\_error by dividing the sum of the distance of each activated sensor with
- the total number of activated sensors. This line\_error ten represents the 
+ the total number of activated sensors. This line\_error represents the 
  offset of the black line from the center, regardless of how wide the line is.
   Even if only one sensor is not activated, we still get a useful line error value. 
 \begin{lstlisting}[language=C, caption={Function to calculate the line error based on a binary array }, label={lst:calcer} ]
@@ -1243,7 +1245,7 @@ float calc_yaw_error(float line_error){
     return yaw_err;
 }
 \end{lstlisting}
-The calc\_yaw\_error function in Code \ref{lst:yaw} calculates a much stabler result
+The calc\_yaw\_error function in Listing \ref{lst:yaw} calculates a much stabler result
  for our error value. It includes the wheelbase dimension (D) and the 
  distance between the line sensor and wheels (H). This determines the 
  position of the turning point of the bot, which is between the two wheels, 
@@ -1262,7 +1264,7 @@ Based on the yaw error, we can now calculate our reference for the two motors.
 Since our motor controller is designed to compute rotations per minute, we set 
 a base speed of 100 rpm and depending on the direction of the motor add or subtract
 our yaw error. To give the yaw error more effect on the base speed, we incorporated
-an additional gain. Testing different gains, we first found a relay able solution with
+an additional gain. Testing different gains, we first found a reliable solution with
 a base speed of 100 rpm +- yaw\_error * 12. By Increasing the gain, we got better 
 performance in sharper corners. The drawback was increased instability
  on the straight segments. Small changes in the yaw error multiplied with 
@@ -1278,7 +1280,7 @@ performance in sharper corners. The drawback was increased instability
  A very simple solution was to square the yaw error.
   This would increase the gain linearly. To keep the
    sign of the yaw error, the absolute value of the yaw 
-   error was multiplied by itself, see Code \ref{lst:refre}. For tuning
+   error was multiplied by itself, see Listing \ref{lst:refre}. For tuning
     this setup to use different base speeds it is possible to
      also add a gain to increase the impact of the squared yaw error.   
 \begin{lstlisting}[language=C, caption={Calculating the reference signals for the motors}, label={lst:refre} ]
@@ -1288,7 +1290,7 @@ reference_rpm_R = 100 + yaw_err*ABS(yaw_err);
 \newpage
 The plot of Figure \ref{fig:datal4} shows the signals of the left and right motor. There is also 
 shown the line and yaw error calculated from the data collected by the line sensor.
-The reference signal for each motor is then set by the functions shown in Code \ref{lst:refre}.
+The reference signal for each motor is then set by the functions shown in Listing \ref{lst:refre}.
 It is clear to see that the encoder value of each motor is tracing the reference 
 signal great. It is also clear to see the limitations of the motors. When the
 reference exceeds a given speed of around 150 rpm, the motors are limited by the 
