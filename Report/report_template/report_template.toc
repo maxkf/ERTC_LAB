@@ -1,0 +1,42 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {0}Abstract}{2}{}%
+\contentsline {section}{\numberline {1}Laboratory 1: I2C}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Description}{3}{}%
+\contentsline {subsubsection}{\numberline {1.1.1}Inter-Integrated Circuit (I2C)}{3}{}%
+\contentsline {subsubsection}{\numberline {1.1.2}SX1509 I/O Expander}{4}{}%
+\contentsline {subsubsection}{\numberline {1.1.3}APIs}{5}{}%
+\contentsline {subsection}{\numberline {1.2}Exercises}{7}{}%
+\contentsline {subsubsection}{\numberline {1.2.1}Exercise 1:}{7}{}%
+\contentsline {subsubsection}{\numberline {1.2.2}Exercise 2:}{8}{}%
+\contentsline {subsubsection}{\numberline {1.2.3}Exercise 3:}{10}{}%
+\contentsline {subsubsection}{\numberline {1.2.4}Exercise 4 - Bonus:}{11}{}%
+\contentsline {section}{\numberline {2}Laboratory 2: Open loop control (camera stabilizer)}{13}{}%
+\contentsline {subsection}{\numberline {2.1}Description}{13}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}IMU}{13}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Servo Motor}{14}{}%
+\contentsline {subsection}{\numberline {2.2}Exercises}{15}{}%
+\contentsline {subsubsection}{\numberline {2.2.1}Exercise1:}{15}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Bonus:}{16}{}%
+\contentsline {section}{\numberline {3}Laboratory 3: Motor Control}{18}{}%
+\contentsline {subsection}{\numberline {3.1}Description}{18}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}DC Motor}{18}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}DRV8871}{19}{}%
+\contentsline {subsubsection}{\numberline {3.1.3}PWM Setting}{21}{}%
+\contentsline {subsubsection}{\numberline {3.1.4}Position Encoder}{21}{}%
+\contentsline {subsubsection}{\numberline {3.1.5}PID Controller:}{21}{}%
+\contentsline {subsubsection}{\numberline {3.1.6}Anti-Windup feature}{21}{}%
+\contentsline {subsection}{\numberline {3.2}Implementation details}{22}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Hardware setup and peripheral list}{22}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Motor and Encoder}{22}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}PWM}{23}{}%
+\contentsline {subsection}{\numberline {3.3}Exercises}{23}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}Exercise1}{23}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}Exercise2}{27}{}%
+\contentsline {subsubsection}{\numberline {3.3.3}Exercise Bonus}{27}{}%
+\contentsline {section}{\numberline {4}Laboratory 4: Line Following}{30}{}%
+\contentsline {subsection}{\numberline {4.1}Description}{30}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}The infrared line sensor}{30}{}%
+\contentsline {subsubsection}{\numberline {4.1.2}Properties of the line}{30}{}%
+\contentsline {subsubsection}{\numberline {4.1.3}Calculating the reference for the motors}{33}{}%
+\contentsline {section}{\numberline {A}Section in the Appendix}{35}{}%
+\contentsline {subsection}{\numberline {A.1}Subsection in the Appendix}{35}{}%
