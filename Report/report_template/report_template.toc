@@ -20,13 +20,13 @@
 \contentsline {section}{\numberline {3}Laboratory 3: Motor Control}{18}{}%
 \contentsline {subsection}{\numberline {3.1}Description}{18}{}%
 \contentsline {subsubsection}{\numberline {3.1.1}DC Motor}{18}{}%
-\contentsline {subsubsection}{\numberline {3.1.2}DRV8871}{19}{}%
-\contentsline {subsubsection}{\numberline {3.1.3}PWM Setting}{21}{}%
-\contentsline {subsubsection}{\numberline {3.1.4}Position Encoder}{21}{}%
-\contentsline {subsubsection}{\numberline {3.1.5}PID Controller:}{21}{}%
+\contentsline {subsubsection}{\numberline {3.1.2}DRV8871}{18}{}%
+\contentsline {subsubsection}{\numberline {3.1.3}PWM Setting}{20}{}%
+\contentsline {subsubsection}{\numberline {3.1.4}Position Encoder}{20}{}%
+\contentsline {subsubsection}{\numberline {3.1.5}PID Controller:}{20}{}%
 \contentsline {subsubsection}{\numberline {3.1.6}Anti-Windup feature}{21}{}%
-\contentsline {subsection}{\numberline {3.2}Implementation details}{22}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}Hardware setup and peripheral list}{22}{}%
+\contentsline {subsection}{\numberline {3.2}Implementation details}{21}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Hardware setup and peripheral list}{21}{}%
 \contentsline {subsubsection}{\numberline {3.2.2}Motor and Encoder}{22}{}%
 \contentsline {subsubsection}{\numberline {3.2.3}PWM}{23}{}%
 \contentsline {subsection}{\numberline {3.3}Exercises}{23}{}%
