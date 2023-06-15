@@ -679,7 +679,7 @@ while (1) {
   The servo motor is set on “TIM\_CHANNEL\_3”.
 \begin{figure}[tbh]
     \centering
-    \includesvg[width=0.95\textwidth, height=0.9\textheight]{figures/plot.svg}
+    \includegraphics[width=0.95\textwidth, height=0.7\textheight]{figures/plot.pdf}
     \caption{Data captured while tilting and panning the TurtleBot}
     \label{fig:datal2}
 \end{figure}
@@ -734,7 +734,7 @@ The motor can be controlled bidirectionally by implementing an H-bridge.
     \label{fig:drv}
 \end{figure}
 \newpage
-Below is a description of some important pins that can be found. \newline
+Below is a description of some important pins. \newline
 \begin{center}    
     \begin{tabular}{lS[table-format=3]cS[table-format=2.2]}
         \toprule
@@ -790,8 +790,8 @@ depends on which phase’s signal lead over the other;
 A counter can be used to measure the number of pulses 
 (a pulse can be counted when an edge happens). 
 \subsubsection{PID Controller:}
-PID (Proportional Integral Derivative) controllers use a control loop feedback 
-mechanism to control process variables and are the most accurate and stable controller.
+PID (Proportional Integral Derivative) controller uses a control loop feedback 
+mechanism to control process variables and is the most accurate and stable controller.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.80\textwidth, height=0.25\textheight]{figures/PID.png}
@@ -799,16 +799,27 @@ mechanism to control process variables and are the most accurate and stable cont
     \label{fig:windup}
 \end{figure}
 Using the derivative control mode is a bad idea when the process variable has a lot
- of noise on it. 'Noise' is small, random, rapid changes in the process variable,
+ of noise on it. Noise is small, random, rapid changes in the process variable,
   and consequently rapid changes in the error. Because the derivative mode extrapolates
-   the current slope of the error, it is highly affected by noise. Therefore, we only
-    need to design and implement PI controller for this lab.
+   the current slope of the error, it is highly affected by noise. Therefore, only PI controller
+   is needed to be designed and implemented for this lab.
 \subsubsection{Anti-Windup feature}
-Integral windup refers to the situation in a PID controller where a large change in setpoint occurs (say a positive change) and the integral term accumulates a significant error during the rise (windup), thus overshooting and continuing to increase as this accumulated error is unwound (offset by errors in the other direction). The specific problem is the excess overshooting. 
+Integral windup refers to the situation in a PID controller where a large
+ change in setpoint occurs (say a positive change) and the integral 
+ term accumulates a significant error during the rise (windup), thus 
+ overshooting and continuing to increase as this accumulated error is
+  unwound (offset by errors in the other direction). The specific problem 
+  is the excess overshooting. 
 
-Integral windup can come from derivative action or a large reference. In case of the TurtleBot, since no derivative control mode is used in the controller, only the reference may cause the overshooting.  
+Integral windup can come from derivative action or a large reference.
+ In case of the TurtleBot, since no derivative control mode is used in
+  the controller, only the reference may cause the overshooting.  
 
-In order to solve the problem, an Anti-windup architecture is necessary. It is basically a saturation over the control output of the integrator, that keeps the error caused by the integral term of the controller in a desired range.  This prevents accumulation of the error and consequently the overshooting. The figure below illustrates a common Anti-windup architecture. 
+In order to solve the problem, an Anti-windup architecture is necessary.
+ It is basically a saturation over the control output of the integrator,
+  that keeps the error caused by the integral term of the controller in 
+  a desired range.  This prevents accumulation of the error and consequently
+   the overshooting. The figure below illustrates a common Anti-windup architecture. 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=0.80\textwidth, height=0.25\textheight]{figures/windup.png}
@@ -902,7 +913,7 @@ By using the encoders (TIM3, TIM4), implemented in the way that has been explain
 in section 3.2.2, the number of pulses for each wheel is available. Considering 
 that the counter period is the number of pulses per round from each wheel-side
  (in this case 3840 since a 4X encoder mode is used),  the 
- speed of the motors can be evaluate in round per minutes as follow: \newline
+ speed of the motors can be evaluate in rotation per minute as follows: \newline
  \begin{center}
     $\textbf{speed[rpm]} = \frac{\textbf{number of pulses}}{\textbf{3840}} * \frac{60}{T_s}$
  \end{center}
@@ -937,6 +948,7 @@ To avoid overshooting in the response, caused by accumulation of the
 integrator error, an Anti-windup scheme is set up. It is a saturation over
 $E_I$. The threshold of the error which is 10 has been selected by trial and error.
 The optimal values of the $K_P$  and $K_I$ are found by trial and error. 
+\newpage
 \begin{lstlisting}[language=C, caption={PI Controller}, label={lst:PI} ]
 float Kp = 0.34;
 float KI = 0.2;
@@ -959,9 +971,9 @@ After summing up the proportional and integral term and producing the output
     function called when a timer’s period is elapsed. 
 
     A linear relationship between the duty cycle and
-     the voltage applied to the motor is assumed. The supply voltage $[o, V_{PowerSupply}]$. $V_{PowerSupply}$ ,depending on the power supply source,
-    is assumed equal to $V_{BAT} = 8[v]$.
-\newpage
+     the voltage applied to the motor is assumed. The supply voltage is $[o, V_{PowerSupply}]$. $V_{PowerSupply}$ ,depending on the power supply source,
+    is assumed to be equal to $V_{BAT} = 8[v]$.
+
 \begin{lstlisting}[language=C, caption={calculating duty cycle}, label={lst:duty} ]
 #define VBATT	8.0 
 #define V2DUTY	((float)(TIM8_ARR_VALUE+1)/VBATT) 
@@ -974,7 +986,7 @@ int32_t duty_R = V2DUTY*motor_V_R;
 int32_t duty_L = V2DUTY*motor_V_L;   
 \end{lstlisting}
 According to the Counter Period of TIM6, generating the PWM signal,
-a saturation of 399 is set over each duty cycle to prevent over driving the motors. 
+a saturation of 399 is set over each duty cycle to prevent over-driving the motors. 
 \begin{lstlisting}[language=C, caption={calculating duty cycle and command the motors}, label={lst:duty1} ]
 // calculate duty cycle for motor
 int32_t duty_R = V2DUTY*motor_V_R;
@@ -1018,10 +1030,10 @@ if (duty_L >= 0) { // rotate forward
     __HAL_TIM_SET_COMPARE(&htim8, TIM_CHANNEL_4, (uint32_t)-duty_L);
 } 
 \end{lstlisting}
-\newpage
+
 Since the control is implemented using the Forward/Break 
 technique in Exercise 1, the commands to the motors are setup in
- the way that is shown in Listing \ref{lst:duty1}  To collect the sensor values the data logger is setup to save and plot all relevant information.
+ the way that is shown in Listing \ref{lst:duty1}.  To collect the sensor values the data logger is setup to save and plot all relevant information.
    The set up is as follows: 
 \begin{lstlisting}[language=C, caption={setting up data logger}, label={lst:date} ]
 data.w1 = reference_rpm_R;
@@ -1037,14 +1049,14 @@ data.y2 = controller_return_L;
 
 ertc_dlog_send(&logger, &data, sizeof(data));  
 \end{lstlisting}
+\newpage
 The results are plotted as shown below:
 \begin{figure}[tbh]
     \centering
-    \includesvg[width = 1.5\textwidth, height=0.6\textheight]{figures/LAB3_forwardandbreak_with_antiWindup_2.svg}
+    \includegraphics[width = 0.95\textwidth, height=0.6\textheight]{figures/LAB3_forwardandbreak_with_antiWindup_2.pdf}
     \caption{The results of the control using the Forward/Brake technique}
     \label{fig:b2}
 \end{figure}
-\newpage
 To conclude, the results show that after turning on the motors, 
 it takes a few milliseconds for motors to reach desired speed 
 (acceptable rise time); even after being turned off for a while,
@@ -1053,13 +1065,14 @@ it takes a few milliseconds for motors to reach desired speed
    step response is settled at the reference value in few seconds.
     Notice that the noise in the response is because of the nature of
     the system and the digital controller. 
+\newpage
 \subsubsection{Exercise2}
 In order to implement the controller with the Forward/Coast 
 technique,  the alternative piece of code is changed,
  shown in Listing \ref{lst:duty1}. 
  \begin{figure}[tbh]
     \centering
-    \includesvg[width = 1.5\textwidth, height=0.6\textheight]{figures/LAB3_forwardandcoast_with_antiWindup_2.svg}
+    \includegraphics[width = 0.95\textwidth, height=0.6\textheight]{figures/LAB3_forwardandcoast_with_antiWindup_2.pdf}
     \caption{The results of the control using the Forward/Coast technique }
     \label{fig:b3}
 \end{figure}\newline
@@ -1068,6 +1081,7 @@ is not driven and will move by inertia. On the other hand, brake mode will
 stop the motor faster. Therefore, the step response of motor implemented by
 Forward/Coast technique has more noises (even when the motor is set to be off)
 which can be interpreted as the inertia.  
+\newpage
 \subsubsection{Exercise Bonus}
 The Anti-windup is implemented in the way that has been explained in
 section 3.3.1, particularly in Listing \ref{lst:PI}. As mentioned before the
@@ -1096,18 +1110,18 @@ is not used are shown in Figure \ref{fig:b4} and Figure \ref{fig:b5}. To conclud
 the step response of the system (no matter implemented by which technique),
  without implementing an Anti-windup feature, has a large overshoot due
   to the accumulation of the error caused by integral term. Adding an 
-  Anti-windup feature enhances the overall performance and reduced the 
+  Anti-windup feature enhances the overall performance and reduces the 
   overshoot in the system, as expected (Figure \ref{fig:b2} and Figure \ref{fig:b3}).
 \begin{figure}[tbh]
     \centering
-    \includesvg[width = 1.5\textwidth, height=0.6\textheight]{figures/LAB3_forwardandbreak_with_NOantiWindup.svg}
+    \includegraphics[width = 0.90\textwidth, height=0.5\textheight]{figures/LAB3_forwardandbreak_with_NOantiWindup.pdf}
     \caption{The results of the control using the Forward/Break technique without Anti-windup} 
     \label{fig:b4}
 \end{figure} 
 \newpage
 \begin{figure}[tbh]
     \centering
-    \includesvg[width = 1.5\textwidth, height=0.6\textheight]{figures/LAB3_forwardandcoast_with_NOantiWindup.svg}
+    \includegraphics[width = 0.9\textwidth, height=0.5\textheight]{figures/LAB3_forwardandcoast_with_NOantiWindup.pdf}
     \caption{The results of the control using the Forward/Coast technique without Anti-windup} 
     \label{fig:b5}
 \end{figure} 
@@ -1211,7 +1225,6 @@ int calc_error_line (int binary[]){
     return line_error;
 }
 \end{lstlisting}
-\newpage
 \begin{lstlisting}[language=C, caption={Conversion from line error to yaw error }, label={lst:yaw} ]
 float calc_yaw_error(float line_error){
     float phi_err = line_error/85;
@@ -1231,6 +1244,7 @@ The calc\_yaw\_error function in Listing \ref{lst:yaw} calculates a much stabler
     D=165 mm, H=85 mm}
     \label{fig:turt}
 \end{figure}
+\newpage
 \subsubsection{Calculating the reference for the motors}
 
 Based on the yaw error the reference for the two motors is calculated.
@@ -1255,7 +1269,7 @@ a base speed of 100 rpm +- yaw\_error * 12 was found. By Increasing the gain, th
 reference_rpm_L = 100 - yaw_err*ABS(yaw_err); // workes great 
 reference_rpm_R = 100 + yaw_err*ABS(yaw_err);
 \end{lstlisting}
-\newpage
+
 The plot of Figure \ref{fig:datal4} shows the signals of the left and right motor. There is also 
 shown the line and yaw error calculated from the data collected by the line sensor.
 The reference signal for each motor is then set by the functions shown in Listing \ref{lst:refre}.
@@ -1269,20 +1283,11 @@ This is because the ratio between wheelbase (D) to distance of line (H) sensor
 to wheels is almost one half, shown in Figure \ref{fig:turt}. 
 \begin{figure}[tbh]
     \centering
-    \includesvg[width=0.9\textwidth, height=0.8\textheight]{figures/plotLab4.svg}
+    \includegraphics[width=0.95\textwidth, height=0.7\textheight]{figures/plotLab4.pdf}
     \caption{Motor Level Plot}
     \label{fig:datal4}
 \end{figure}
 
 \clearpage
-\appendix
-
-\section{Section in the Appendix}
-\label{sec:app1}
-
-\subsection{Subsection in the Appendix}
-\label{subsec:app2}
-
-Additional relevant information...
 
 \end{document}

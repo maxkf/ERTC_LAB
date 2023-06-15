@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.5)  14 JUN 2023 17:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.6.5)  15 JUN 2023 10:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -616,100 +616,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 622--628
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-Package svg Info: Last page of `./svg-inkscape/plot_svg-tex.pdf' is 11 on input line 682.
- (./svg-inkscape/plot_svg-tex.pdf_tex
-<./svg-inkscape/plot_svg-tex.pdf, id=86, page=1, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=87, page=2, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 2>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page2 used on input line 68.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=88, page=3, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 3>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page3 used on input line 81.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=89, page=4, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 4>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page4 used on input line 96.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=90, page=5, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 5>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page5 used on input line 98.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=91, page=6, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 6>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page6 used on input line 100.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=92, page=7, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 7>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page7 used on input line 112.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=93, page=8, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 8>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page8 used on input line 121.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=94, page=9, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 9>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page9 used on input line 132.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=95, page=10, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 10>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page10 used on input line 134.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-<./svg-inkscape/plot_svg-tex.pdf, id=96, page=11, 697.10437pt x 599.23875pt>
-File: ./svg-inkscape/plot_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plot_svg-tex.pdf, page 11>
-Package pdftex.def Info: ./svg-inkscape/plot_svg-tex.pdf , page11 used on input line 136.
-(pdftex.def)             Requested size: 459.51054pt x 395.00504pt.
-) [16] [17 <./svg-inkscape/plot_svg-tex.pdf> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plot_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plot_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-<figures/motorfig.png, id=127, 417.81094pt x 368.1253pt>
+<figures/plot.pdf, id=85, 697.10437pt x 599.23875pt>
+File: figures/plot.pdf Graphic file (type pdf)
+<use figures/plot.pdf>
+Package pdftex.def Info: figures/plot.pdf  used on input line 682.
+(pdftex.def)             Requested size: 459.5159pt x 511.86984pt.
+ [16] [17 <./figures/plot.pdf>]
+<figures/motorfig.png, id=122, 417.81094pt x 368.1253pt>
 File: figures/motorfig.png Graphic file (type png)
 <use figures/motorfig.png>
 Package pdftex.def Info: figures/motorfig.png  used on input line 711.
 (pdftex.def)             Requested size: 290.24069pt x 219.3771pt.
-<figures/DRV.png, id=128, 537.00626pt x 379.4175pt>
+<figures/DRV.png, id=123, 537.00626pt x 379.4175pt>
 File: figures/DRV.png Graphic file (type png)
 <use figures/DRV.png>
 Package pdftex.def Info: figures/DRV.png  used on input line 732.
@@ -725,7 +643,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 737--738
 
  []
 
-<figures/HBrige.png, id=133, 1091.07625pt x 560.0925pt>
+<figures/HBrige.png, id=128, 1091.07625pt x 560.0925pt>
 File: figures/HBrige.png Graphic file (type png)
 <use figures/HBrige.png>
 Package pdftex.def Info: figures/HBrige.png  used on input line 770.
@@ -734,12 +652,12 @@ Package pdftex.def Info: figures/HBrige.png  used on input line 770.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [19 <./figures/DRV.png>]
-<figures/Encoder.png, id=138, 348.55219pt x 125.71968pt>
+<figures/Encoder.png, id=133, 348.55219pt x 125.71968pt>
 File: figures/Encoder.png Graphic file (type png)
 <use figures/Encoder.png>
 Package pdftex.def Info: figures/Encoder.png  used on input line 786.
 (pdftex.def)             Requested size: 338.60577pt x 146.24544pt.
-<figures/PID.png, id=139, 602.25pt x 277.035pt>
+<figures/PID.png, id=134, 602.25pt x 277.035pt>
 File: figures/PID.png Graphic file (type png)
 <use figures/PID.png>
 Package pdftex.def Info: figures/PID.png  used on input line 797.
@@ -749,455 +667,91 @@ Package pdftex.def Info: figures/PID.png  used on input line 797.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [20 <./figures/HBrige.png> <./figures/Encoder.png>]
-<figures/windup.png, id=145, 451.6875pt x 231.86626pt>
+<figures/windup.png, id=140, 451.6875pt x 231.86626pt>
 File: figures/windup.png Graphic file (type png)
 <use figures/windup.png>
-Package pdftex.def Info: figures/windup.png  used on input line 814.
+Package pdftex.def Info: figures/windup.png  used on input line 825.
 (pdftex.def)             Requested size: 386.98253pt x 182.81145pt.
  [21 <./figures/PID.png> <./figures/windup.png>]
-Overfull \hbox (8.18677pt too wide) in paragraph at lines 875--876
+Overfull \hbox (8.18677pt too wide) in paragraph at lines 886--887
 [][][][][][][][][][][][][][][][] 
  []
 
 [22]
-Overfull \hbox (8.18677pt too wide) in paragraph at lines 884--885
+Overfull \hbox (8.18677pt too wide) in paragraph at lines 895--896
 [][][][][][][][][][][][][][][][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 901--906
+Underfull \hbox (badness 10000) in paragraph at lines 912--917
 
  []
 
 [23] [24] [25]
-Package svg Info: Last page of `./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf' is 9 on input line 1043.
- (./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf_tex
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=166, page=1, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=167, page=2, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 2>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page2 used on input line 68.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=168, page=3, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 3>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page3 used on input line 79.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=169, page=4, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 4>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page4 used on input line 81.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=170, page=5, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 5>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page5 used on input line 83.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=171, page=6, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 6>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page6 used on input line 95.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=172, page=7, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 7>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page7 used on input line 106.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=173, page=8, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 8>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page8 used on input line 108.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, id=174, page=9, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf, page 9>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf , page9 used on input line 110.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-) [26 <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf> <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-Package svg Info: Last page of `./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf' is 9 on input line 1062.
- (./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf_tex
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=184, page=1, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=185, page=2, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 2>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page2 used on input line 64.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=186, page=3, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 3>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page3 used on input line 75.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=187, page=4, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 4>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page4 used on input line 77.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=188, page=5, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 5>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page5 used on input line 79.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=189, page=6, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 6>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page6 used on input line 87.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=190, page=7, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 7>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page7 used on input line 98.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=191, page=8, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 8>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page8 used on input line 100.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, id=192, page=9, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf, page 9>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf , page9 used on input line 102.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-) [27 <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf> <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_antiWindup_2_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-Package svg Info: Last page of `./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf' is 9 on input line 1103.
- (./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf_tex
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=202, page=1, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=203, page=2, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 2>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page2 used on input line 68.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=204, page=3, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 3>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page3 used on input line 82.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=205, page=4, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 4>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page4 used on input line 84.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=206, page=5, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 5>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page5 used on input line 86.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=207, page=6, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 6>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page6 used on input line 98.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=208, page=7, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 7>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page7 used on input line 112.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=209, page=8, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 8>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page8 used on input line 114.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, id=210, page=9, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf, page 9>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf , page9 used on input line 116.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-) [28 <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf> <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandbreak_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-Package svg Info: Last page of `./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf' is 9 on input line 1110.
- (./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf_tex
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=220, page=1, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=221, page=2, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 2>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page2 used on input line 68.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=222, page=3, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 3>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page3 used on input line 82.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=223, page=4, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 4>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page4 used on input line 84.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=224, page=5, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 5>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page5 used on input line 86.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=225, page=6, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 6>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page6 used on input line 98.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=226, page=7, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 7>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page7 used on input line 112.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=227, page=8, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 8>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page8 used on input line 114.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-<./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, id=228, page=9, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf, page 9>
-Package pdftex.def Info: ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf , page9 used on input line 116.
-(pdftex.def)             Requested size: 469.40112pt x 438.76596pt.
-) [29 <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf> <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/LAB3_forwardandcoast_with_NOantiWindup_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->]
-<figures/line.png, id=237, 691.08188pt x 288.57813pt>
+<figures/LAB3_forwardandbreak_with_antiWindup_2.pdf, id=160, 864.98157pt x 808.52063pt>
+File: figures/LAB3_forwardandbreak_with_antiWindup_2.pdf Graphic file (type pdf)
+<use figures/LAB3_forwardandbreak_with_antiWindup_2.pdf>
+Package pdftex.def Info: figures/LAB3_forwardandbreak_with_antiWindup_2.pdf  used on input line 1056.
+(pdftex.def)             Requested size: 459.50713pt x 438.75362pt.
+ [26 <./figures/LAB3_forwardandbreak_with_antiWindup_2.pdf>]
+<figures/LAB3_forwardandcoast_with_antiWindup_2.pdf, id=181, 864.98157pt x 808.52063pt>
+File: figures/LAB3_forwardandcoast_with_antiWindup_2.pdf Graphic file (type pdf)
+<use figures/LAB3_forwardandcoast_with_antiWindup_2.pdf>
+Package pdftex.def Info: figures/LAB3_forwardandcoast_with_antiWindup_2.pdf  used on input line 1075.
+(pdftex.def)             Requested size: 459.50713pt x 438.75362pt.
+ [27 <./figures/LAB3_forwardandcoast_with_antiWindup_2.pdf>]
+<figures/LAB3_forwardandbreak_with_NOantiWindup.pdf, id=202, 864.98157pt x 808.52063pt>
+File: figures/LAB3_forwardandbreak_with_NOantiWindup.pdf Graphic file (type pdf)
+<use figures/LAB3_forwardandbreak_with_NOantiWindup.pdf>
+Package pdftex.def Info: figures/LAB3_forwardandbreak_with_NOantiWindup.pdf  used on input line 1117.
+(pdftex.def)             Requested size: 435.32741pt x 365.6198pt.
+ [28 <./figures/LAB3_forwardandbreak_with_NOantiWindup.pdf>]
+<figures/LAB3_forwardandcoast_with_NOantiWindup.pdf, id=224, 864.98157pt x 808.52063pt>
+File: figures/LAB3_forwardandcoast_with_NOantiWindup.pdf Graphic file (type pdf)
+<use figures/LAB3_forwardandcoast_with_NOantiWindup.pdf>
+Package pdftex.def Info: figures/LAB3_forwardandcoast_with_NOantiWindup.pdf  used on input line 1124.
+(pdftex.def)             Requested size: 435.32741pt x 365.6198pt.
+ [29 <./figures/LAB3_forwardandcoast_with_NOantiWindup.pdf>]
+<figures/line.png, id=245, 691.08188pt x 288.57813pt>
 File: figures/line.png Graphic file (type png)
 <use figures/line.png>
-Package pdftex.def Info: figures/line.png  used on input line 1141.
+Package pdftex.def Info: figures/line.png  used on input line 1155.
 (pdftex.def)             Requested size: 435.33116pt x 182.81793pt.
-<figures/procedure.png, id=238, 252.19218pt x 234.1247pt>
+<figures/procedure.png, id=246, 252.19218pt x 234.1247pt>
 File: figures/procedure.png Graphic file (type png)
 <use figures/procedure.png>
-Package pdftex.def Info: figures/procedure.png  used on input line 1148.
+Package pdftex.def Info: figures/procedure.png  used on input line 1162.
 (pdftex.def)             Requested size: 217.66222pt x 182.82014pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[30 <./figures/line.png>] [31 <./figures/procedure.png>] [32]
-<figures/tut.png, id=251, 315.42844pt x 305.64188pt>
+[30 <./figures/line.png>] [31 <./figures/procedure.png>]
+<figures/tut.png, id=256, 315.42844pt x 305.64188pt>
 File: figures/tut.png Graphic file (type png)
 <use figures/tut.png>
-Package pdftex.def Info: figures/tut.png  used on input line 1229.
+Package pdftex.def Info: figures/tut.png  used on input line 1242.
 (pdftex.def)             Requested size: 266.05063pt x 255.93526pt.
- [33 <./figures/tut.png>]
-Package svg Info: Last page of `./svg-inkscape/plotLab4_svg-tex.pdf' is 13 on input line 1272.
- (./svg-inkscape/plotLab4_svg-tex.pdf_tex
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=257, page=1, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 1>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page1 used on input line 56.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=258, page=2, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 2>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page2 used on input line 64.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=259, page=3, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 3>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page3 used on input line 73.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=260, page=4, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 4>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page4 used on input line 75.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=261, page=5, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 5>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page5 used on input line 77.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=262, page=6, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 6>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page6 used on input line 85.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=263, page=7, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 7>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page7 used on input line 94.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=264, page=8, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 8>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page8 used on input line 96.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=265, page=9, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 9>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page9 used on input line 98.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=266, page=10, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 10>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page10 used on input line 106.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=267, page=11, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 11>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page11 used on input line 116.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=268, page=12, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 12>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page12 used on input line 118.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-<./svg-inkscape/plotLab4_svg-tex.pdf, id=269, page=13, 864.98157pt x 808.52063pt>
-File: ./svg-inkscape/plotLab4_svg-tex.pdf Graphic file (type pdf)
-<use ./svg-inkscape/plotLab4_svg-tex.pdf, page 13>
-Package pdftex.def Info: ./svg-inkscape/plotLab4_svg-tex.pdf , page13 used on input line 120.
-(pdftex.def)             Requested size: 435.32422pt x 406.91179pt.
-) [34 <./svg-inkscape/plotLab4_svg-tex.pdf> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
-> <./svg-inkscape/plotLab4_svg-tex.pdf
-
-pdfTeX warning: pdflatex (file ./svg-inkscape/plotLab4_svg-tex.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [35
-
-] (./report_template.aux) ) 
+ [32 <./figures/tut.png>]
+<figures/plotLab4.pdf, id=261, 864.98157pt x 808.52063pt>
+File: figures/plotLab4.pdf Graphic file (type pdf)
+<use figures/plotLab4.pdf>
+Package pdftex.def Info: figures/plotLab4.pdf  used on input line 1286.
+(pdftex.def)             Requested size: 459.50713pt x 511.86278pt.
+ [33] [34 <./figures/plotLab4.pdf>] (./report_template.aux) ) 
 Here is how much of TeX's memory you used:
- 16683 strings out of 478287
- 337269 string characters out of 5849290
- 854309 words of memory out of 5000000
- 34604 multiletter control sequences out of 15000+600000
+ 16464 strings out of 478287
+ 322916 string characters out of 5849290
+ 851289 words of memory out of 5000000
+ 34406 multiletter control sequences out of 15000+600000
  478528 words of font info for 42 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 94i,16n,92p,705b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 94i,11n,92p,705b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb>
-Output written on report_template.pdf (36 pages, 2318742 bytes).
+Output written on report_template.pdf (35 pages, 2348486 bytes).
 PDF statistics:
- 353 PDF objects out of 1000 (max. 8388607)
- 168 compressed objects within 2 object streams
+ 357 PDF objects out of 1000 (max. 8388607)
+ 210 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 443 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
